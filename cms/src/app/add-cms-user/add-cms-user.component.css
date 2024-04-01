@@ -1,10 +1,10 @@
 .container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: rgba(104, 154, 167, 0.541);
+    background-color: rgba(194, 226, 235, 0.541);
 }
 
 h1 {
