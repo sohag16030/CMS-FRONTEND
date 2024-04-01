@@ -1,0 +1,76 @@
+.container {
+    max-width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(175, 207, 206);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#country {
+    width: 102%;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select[multiple] {
+    height: 100px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group .radio-group,
+.form-group .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-group .radio-group input[type="radio"],
+.form-group .checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.form-group .radio-group label,
+.form-group .checkbox-group label {
+    margin-right: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3a7ab6;
+}
+
+input.ng-invalid.ng-touched {
+    border: red 1px solid;
+}
