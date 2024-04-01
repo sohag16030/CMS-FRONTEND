@@ -19,8 +19,8 @@ export class CmsUserService {
         return this.http.get(`${BASIC_URL}/api/cmsUsers/${cmsUserId}`);
     }
 
-    getAllCmsUsers(): Observable<any> {
-        return this.http.get(`${BASIC_URL}/api/cmsUsers`);
+    getAllCmsUsers(params: any): Observable<any> {
+        return this.http.get(`${BASIC_URL}/api/cmsUsers`, { params });
     }
 
     updateCmsUser(cmsUserId: number, updatedData: any): Observable<any> {
