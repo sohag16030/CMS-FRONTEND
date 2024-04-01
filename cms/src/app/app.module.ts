@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { ListCmsUsersComponent } from './list-cms-users/list-cms-users.component';
 import { DetailsCmsUserComponent } from './list-cms-users/details-cms-user/details-cms-user.component';
 import { EditCmsUserComponent } from './edit-cms-user/edit-cms-user.component';
-import { CreateCmsUserComponent } from './create-cms-user/create-cms-user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { CreateCmsUserComponent } from './create-cms-user/create-cms-user.compon
     ListCmsUsersComponent,
     DetailsCmsUserComponent,
     EditCmsUserComponent,
-    CreateCmsUserComponent
+    AddCmsUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
