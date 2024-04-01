@@ -1,30 +1,62 @@
 <div class="container">
     <h1>Registration Form</h1>
     <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-  
+
         <div class="form-group">
             <label for="userName">User Name</label>
             <input type="text" id="userName" name="userName" formControlName="userName" />
+            <div style="color: red;">
+                <small *ngIf="reactiveForm.get('userName').errors?.['required']">
+                    User Name is a required field
+                </small>
+                <small *ngIf="reactiveForm.get('userName').errors?.['noSpaceAllowed']">
+                    User Name can not contain a space
+                </small>
+            </div>
         </div>
+
 
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" formControlName="password" />
+            <div style="color: red;">
+                <small *ngIf="reactiveForm.get('password').errors?.['required']">
+                    Password is a required field
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
-            <label for="name">FullName:</label>
+            <label for="name">Name:</label>
             <input type="text" id="name" name="name" formControlName="name" />
+            <div style="color: red;">
+                <small *ngIf="reactiveForm.get('name').errors?.['required']">
+                    Name is a required field
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" formControlName="email" />
+            <div style="color: red;">
+                <span style="color: red;" *ngIf="!reactiveForm.get('email').valid && reactiveForm.get('email').touched">
+                    This email you entered is not a valid email
+                </span>
+                <small *ngIf="reactiveForm.get('email').errors?.['required']">
+                    Email is a required field
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
             <input type="text" id="mobileNumber" name="mobileNumber" formControlName="mobileNumber" />
+            <div style="color: red;">
+                <small *ngIf="reactiveForm.get('mobileNumber').errors?.['required']">
+                    Mobile Number is a required field
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
@@ -34,9 +66,14 @@
                 <option value="FEMALE">Female</option>
                 <option value="OTHER">Other</option>
             </select>
+            <div style="color: red;">
+                <small *ngIf="reactiveForm.get('gender').errors?.['required']">
+                    Gender is a required field
+                </small>
+            </div>
+
         </div>
 
         <button type="submit">Submit</button>
     </form>
 </div>
-

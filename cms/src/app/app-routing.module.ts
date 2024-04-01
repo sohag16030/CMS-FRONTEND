@@ -4,6 +4,7 @@ import { ListCmsUsersComponent } from './list-cms-users/list-cms-users.component
 import { DetailsCmsUserComponent } from './list-cms-users/details-cms-user/details-cms-user.component';
 import { EditCmsUserComponent } from './edit-cms-user/edit-cms-user.component';
 import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
+import { ErrorComponent } from './error/error.component';
 
 const appRoute: Routes = [
   { path: '', component: ListCmsUsersComponent},
@@ -15,7 +16,7 @@ const appRoute: Routes = [
   },
   { path: 'AddCmsUsers', component: AddCmsUserComponent},
   { path: 'CmsUsers/EditCmsUsers/:id', component: EditCmsUserComponent },
-  // { path: '**', component: ErrorComponent },
+  { path: '**', component: ErrorComponent },
 ]
 
 @NgModule({

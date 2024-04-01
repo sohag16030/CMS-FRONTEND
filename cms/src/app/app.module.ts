@@ -9,6 +9,7 @@ import { EditCmsUserComponent } from './edit-cms-user/edit-cms-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
     ListCmsUsersComponent,
     DetailsCmsUserComponent,
     EditCmsUserComponent,
-    AddCmsUserComponent
+    AddCmsUserComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
