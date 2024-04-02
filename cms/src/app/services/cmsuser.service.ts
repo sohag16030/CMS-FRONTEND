@@ -25,11 +25,11 @@ export class CmsUserService {
     }
 
     updateCmsUser(cmsUserId: number, updatedData: any): Observable<any> {
-        console.log("update service is called");
         return this.http.put(`${BASIC_URL}/api/cmsUsers/${cmsUserId}`, updatedData);
     }
 
     deleteCmsUser(cmsUserId: number): Observable<any> {
+        console.log("delete service is called");
         return this.http.delete(`${BASIC_URL}/api/cmsUsers/${cmsUserId}`);
     }
 }

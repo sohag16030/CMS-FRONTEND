@@ -41,25 +41,13 @@ export class CmsUserListComponent implements OnInit {
       (response: any) => {
         this.cmsUserList = response.cmsUserList;
         this.numberOfPages = response.numberOfPages;
+        console.log(this.cmsUserList);
       },
       (error) => {
         console.error('Error occurred while fetching CMS user list:', error);
       }
     );
   }
-
-  deleteCmsUser(cmsUserId: number) {
-    this.cmsUserService.deleteCmsUser(cmsUserId).subscribe(
-      () => {
-        console.log('Record deleted successfully.');
-        this.getCmsUserList(); // Refresh CMS user list after deletion
-      },
-      (error) => {
-        console.error('Error occurred while deleting CMS user:', error);
-      }
-    );
-  }
-
   sortData(field: string) {
     if (this.sortField === field) {
       this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
@@ -82,5 +70,18 @@ export class CmsUserListComponent implements OnInit {
       this.pageNumber--;
       this.getCmsUserList();
     }
+  }
+
+  deleteCmsUser(cmsUserId: number) {
+    console.log(cmsUserId);
+    this.cmsUserService.deleteCmsUser(cmsUserId).subscribe(
+      () => {
+        console.log('Record deleted successfully.');
+        this.getCmsUserList(); // Refresh CMS user list after deletion
+      },
+      (error) => {
+        console.error('Error occurred while deleting CMS user:', error);
+      }
+    );
   }
 }

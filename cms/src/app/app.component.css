@@ -1,12 +1,12 @@
 .main-container{
-    background-color: #41322d1d;
+    background-color: hsla(130, 72%, 21%, 0.164);
     width: 90%;
     margin: 0 auto;
   }
   .navbar {
       width: 55%px;
       background-color: #14464d;
-      color: #fff;
+      color: #e7dbdb;
       padding: 10px 20px;
     }
     

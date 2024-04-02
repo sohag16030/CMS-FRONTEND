@@ -22,7 +22,7 @@
                 <th (click)="sortData('userName')">User Name</th>
                 <th (click)="sortData('mobileNumber')">Mobile Number</th>
                 <th (click)="sortData('email')">Email</th>
-                <th (click)="sortData('name')">Name</th>
+                <th (click)="sortData('name')">Full Name</th>
                 <th (click)="sortData('gender')">Gender</th>
                 <th>Actions</th> <!-- Added column for actions -->
             </tr>
@@ -35,9 +35,9 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.gender }}</td>
                 <td>
-                    <button [routerLink]="'/CmsUsers/Details/' + user.userId">Details</button>
-                    <button [routerLink]="'/CmsUsers/Edit/' + user.userId">Edit</button>
-                    <button (click)="deleteCmsUser(user.userId)">Delete</button>
+                    <button class="details" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId">Details</button>
+                    <button class="edit" [routerLink]="'/CmsUser/Edit/' + user.cmsUserId">Edit</button>
+                    <button class="delete" (click)="deleteCmsUser(user.cmsUserId)">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -45,8 +45,8 @@
 
     <!-- Pagination -->
     <div class="pagination">
-        <button (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
+        <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
         <span>{{ pageNumber + 1 }}</span>
-        <button (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
+        <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
     </div>
 </div>

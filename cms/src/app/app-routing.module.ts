@@ -12,11 +12,11 @@ const appRoute: Routes = [
   { path: 'CmsUsers', component: CmsUserListComponent },
   {
     path: 'CmsUsers', children: [
-      { path: 'CmsUsers/:id', component: DetailsCmsUserComponent },
+      { path: 'CmsUser/:id', component: DetailsCmsUserComponent },
     ]
   },
-  { path: 'AddCmsUsers', component: AddCmsUserComponent },
-  { path: 'CmsUsers/EditCmsUsers/:id', component: EditCmsUserComponent },
+  { path: 'AddCmsUser', component: AddCmsUserComponent },
+  { path: 'CmsUser/Edit/:id', component: EditCmsUserComponent },
   { path: '**', component: ErrorComponent },
 ];
 
