@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AcademicInfo, Address, CmsUser, Division, Subject, District, Upazila } from '../../model/cmsUser.model';
+import { CmsUser, Address, District, Division, Upazila, AcademicInfo, Subject } from '../../model/cmsUser.model';
 import { CmsUserService } from '../../services/cmsuser.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class DetailsCmsUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private cmsUserService: CmsUserService // Inject the service
+    private cmsUserService: CmsUserService
   ) { }
 
   ngOnInit(): void {
@@ -30,13 +30,13 @@ export class DetailsCmsUserComponent implements OnInit {
       email: ['', Validators.required],
       name: ['', Validators.required],
       gender: ['', Validators.required],
-      addresses: this.formBuilder.array([]), // Form array for addresses
+      addresses: this.formBuilder.array([]),
+      academicInfos: this.formBuilder.array([]),
       isActive: ['']
     });
 
-    // Fetch the CMS user data from route resolver or service based on the ID
     this.route.params.subscribe(params => {
-      const cmsUserId = +params['id']; // Assuming the parameter name is 'id'
+      const cmsUserId = +params['id'];
       this.getCmsUserById(cmsUserId);
     });
   }
@@ -45,7 +45,6 @@ export class DetailsCmsUserComponent implements OnInit {
     this.cmsUserService.getCmsUserById(cmsUserId).subscribe(
       (data: CmsUser) => {
         this.cmsUser = data;
-        console.log(this.cmsUser);
         this.populateForm();
       },
       error => {
@@ -54,7 +53,6 @@ export class DetailsCmsUserComponent implements OnInit {
     );
   }
 
-  // Populate form with CMS user data
   populateForm(): void {
     this.cmsUserForm.patchValue({
       cmsUserId: this.cmsUser.cmsUserId,
@@ -63,56 +61,81 @@ export class DetailsCmsUserComponent implements OnInit {
       email: this.cmsUser.email,
       name: this.cmsUser.name,
       gender: this.cmsUser.gender,
-      userStatus: this.cmsUser.userStatus,
       isActive: this.cmsUser.isActive,
     });
 
-    // Populate addresses form array
     this.cmsUser.addresses.forEach(address => {
       this.addresses.push(this.createAddressFormGroup(address));
+      console.log(this.addresses);
+    });
+
+    this.cmsUser.academicInfos.forEach(academicInfo => {
+      this.academicInfos.push(this.createAcademicInfoFormGroup(academicInfo));
+      console.log(this.academicInfos);
     });
   }
 
-  // Getter methods for form arrays
   get addresses() {
     return this.cmsUserForm.get('addresses') as FormArray;
   }
 
-   // Create form group for address
-   createAddressFormGroup(address: Address): FormGroup {
+  get academicInfos() {
+    return this.cmsUserForm.get('academicInfos') as FormArray;
+  }
+
+  createAddressFormGroup(address: Address): FormGroup {
     return this.formBuilder.group({
       addressType: [address.addressType],
-      division: this.createDivisionFormGroup(address.division),
-      district: this.createDistrictFormGroup(address.district),
-      upazila: this.createUpazilaFormGroup(address.upazila),
+      divisionName: [address.division ? address.division.name : ''],
+      districtName: [address.district ? address.district.name : ''],
+      upazilaName: [address.upazila ? address.upazila.name : ''],
       isActive: [address.isActive]
     });
   }
 
-  // Create form group for division
   createDivisionFormGroup(division: Division): FormGroup {
     return this.formBuilder.group({
       divisionName: [division ? division.name : '']
     });
   }
 
-  // Create form group for district
   createDistrictFormGroup(district: District): FormGroup {
     return this.formBuilder.group({
       districtName: [district ? district.name : '']
     });
   }
 
-  // Create form group for upazila
   createUpazilaFormGroup(upazila: Upazila): FormGroup {
     return this.formBuilder.group({
       upazilaName: [upazila ? upazila.name : '']
     });
   }
 
+  createAcademicInfoFormGroup(academicInfo: AcademicInfo): FormGroup {
+    const subjectFormArray = this.formBuilder.array([]);
+
+    if (academicInfo.subjects && academicInfo.subjects.length > 0) {
+      academicInfo.subjects.forEach(subject => {
+        subjectFormArray.push(this.createSubjectFormGroup(subject));
+      });
+    }
+    return this.formBuilder.group({
+      academicLevel: [academicInfo.academicLevel],
+      grade: [academicInfo.grade],
+      academicClass: [academicInfo.academicClass],
+      subjects: subjectFormArray
+    });
+  }
+
+  createSubjectFormGroup(subject: Subject): FormControl<string> {
+    const name = subject && subject.name ? subject.name : '';
+    return this.formBuilder.control(name);
+  }
+  
   toggleAddresses() {
     this.showAddresses = !this.showAddresses;
   }
+
   toggleAcademicInfos() {
     this.showAcademicInfos = !this.showAcademicInfos;
   }
