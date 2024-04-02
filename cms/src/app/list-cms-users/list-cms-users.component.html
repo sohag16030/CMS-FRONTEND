@@ -5,8 +5,9 @@
         <div>
             <label for="genderSelect">Gender:</label>
             <select id="genderSelect" [(ngModel)]="filterGender" (change)="applyFilter()">
-                <option value="MALE">Male</option>
-                <option value="FEMALE">Female</option>
+                <option value="" disabled selected>Select Gender</option> 
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
             </select>
         </div>
         <div>
