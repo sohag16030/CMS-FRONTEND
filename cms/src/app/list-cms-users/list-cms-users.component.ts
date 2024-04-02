@@ -13,7 +13,7 @@ export class CmsUserListComponent implements OnInit {
   filterEmail: string = ''; // Default filter value
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 5;
+  pageSize: number = 3;
   sortField: string = 'cmsUserId';
   sortOrder: string = 'ASC';
 
