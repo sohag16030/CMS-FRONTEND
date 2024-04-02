@@ -1,62 +1,91 @@
 <div class="container">
   <h2>User Details</h2>
   <form [formGroup]="cmsUserForm" class="user-details-form">
-      <div class="form-group">
-          <label for="userName">User Name:</label>
-          <input type="text" id="userName" formControlName="userName">
-      </div>
-      <div class="form-group">
-          <label for="mobileNumber">Mobile Number:</label>
-          <input type="text" id="mobileNumber" formControlName="mobileNumber">
-      </div>
-      <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" formControlName="email">
-      </div>
-      <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" formControlName="name">
-      </div>
-      <div class="form-group">
-          <label for="gender">Gender:</label>
-          <input type="text" id="gender" formControlName="gender">
-      </div>
-      <div class="form-group">
-          <label for="isActive">Is Active:</label>
-          <input type="checkbox" id="isActive" formControlName="isActive">
-      </div>
-
-      <div class="form-group" *ngIf="showAddresses">
-        <h3>Addresses:</h3>
-        <div formArrayName="addresses">
-            <div *ngFor="let address of addresses.controls; let i=index" class="address" [formGroupName]="i">
-                <h4>Address {{ i + 1 }}</h4>
-                <div class="form-group">
-                    <label for="addressType">Address Type:</label>
-                    <input type="text" id="addressType" formControlName="addressType">
-                </div>
-                <div class="form-group">
-                    <label for="division">Division:</label>
-                    <input type="text" formControlName="divisionName">
-                </div>
-                <div class="form-group">
-                    <label for="district">District:</label>
-                    <input type="text" formControlName="districtName">
-                </div>
-                <div class="form-group">
-                    <label for="upazila">Upazila:</label>
-                    <input type="text" formControlName="upazilaName">
-                </div>
-                <div class="form-group">
-                    <label for="isActive">Is Active:</label>
-                    <input type="checkbox" id="isActive" formControlName="isActive">
-                </div>
-            </div>
-        </div>
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" formControlName="userName">
+    </div>
+    <div class="form-group">
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" id="mobileNumber" formControlName="mobileNumber">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <input type="text" id="gender" formControlName="gender">
+    </div>
+    <div class="form-group">
+      <label for="isActive">Is Active:</label>
+      <input type="checkbox" id="isActive" formControlName="isActive">
     </div>
 
-      <button type="button" (click)="toggleAddresses()">Toggle Addresses</button>
-      <button type="button" (click)="toggleAcademicInfos()">Toggle Academic Infos</button>
+    <div class="form-group" *ngIf="showAddresses">
+      <h3>Addresses:</h3>
+      <div formArrayName="addresses">
+        <div *ngFor="let address of addresses.controls; let i=index" class="address" [formGroupName]="i">
+          <h4>Address {{ i + 1 }}</h4>
+          <div class="form-group">
+            <label for="addressType">Address Type:</label>
+            <input type="text" id="addressType" formControlName="addressType">
+          </div>
+          <div class="form-group">
+            <label for="division">Division:</label>
+            <input type="text" formControlName="divisionName">
+          </div>
+          <div class="form-group">
+            <label for="district">District:</label>
+            <input type="text" formControlName="districtName">
+          </div>
+          <div class="form-group">
+            <label for="upazila">Upazila:</label>
+            <input type="text" formControlName="upazilaName">
+          </div>
+          <div class="form-group">
+            <label for="isActive">Is Active:</label>
+            <input type="checkbox" id="isActive" formControlName="isActive">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" *ngIf="showAcademicInfos">
+      <h3>Academic Infos:</h3>
+      <div formArrayName="academicInfos">
+        <div *ngFor="let academicInfo of academicInfos.controls; let i=index" class="academic-info" [formGroupName]="i">
+          <h4>Academic Info {{ i + 1 }}</h4>
+          <div class="form-group">
+            <label for="academicLevel">Academic Level:</label>
+            <input type="text" formControlName="academicLevel">
+          </div>
+          <div class="form-group">
+            <label for="grade">Grade:</label>
+            <input type="text" formControlName="grade">
+          </div>
+          <div class="form-group">
+            <label for="academicClass">Academic Class:</label>
+            <input type="text" formControlName="academicClass">
+          </div>
+          <!-- Display subjects -->
+         <!-- Display subjects -->
+         <div formArrayName="subjects">
+          <div *ngFor="let subject of academicInfo.get('subjects')?.value; let j=index" class="subject">
+            <h5>Subject {{ j + 1 }}</h5>
+            <input type="text" [value]="subject">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <button type="button" (click)="toggleAddresses()">Toggle Addresses</button>
+    <button type="button" (click)="toggleAcademicInfos()">Toggle Academic Infos</button>
 
   </form>
 </div>

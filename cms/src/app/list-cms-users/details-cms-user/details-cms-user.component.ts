@@ -66,7 +66,7 @@ export class DetailsCmsUserComponent implements OnInit {
 
     this.cmsUser.addresses.forEach(address => {
       this.addresses.push(this.createAddressFormGroup(address));
-      console.log(this.addresses);
+      // console.log(this.addresses);
     });
 
     this.cmsUser.academicInfos.forEach(academicInfo => {
