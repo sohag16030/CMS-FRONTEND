@@ -16,25 +16,23 @@ export class CmsUser {
     division: Division;
     district: District;
     upazila: Upazila;
+    cmsUser : CmsUser;
     isActive: boolean;
   }
   
   export class Division {
     divisionId: number;
     name: string; 
-    active: boolean;
   }
   
   export class District {
     districtId: number;
     name: string;
-    active: boolean;
   }
   
   export class Upazila {
     upazilaId: number;
     name: string;
-    active: boolean;
   }
   
   export class AcademicInfo {

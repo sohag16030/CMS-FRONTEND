@@ -12,6 +12,8 @@ export class AddressService {
     constructor(private http: HttpClient) { }
 
     addAddress(addressData: any): Observable<any> {
+        console.log("--addressData----");
+        console.log(addressData);
         return this.http.post(`${BASIC_URL}/api/addresses`, addressData);
     }
 

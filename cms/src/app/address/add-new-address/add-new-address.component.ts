@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressService } from '../../services/address.service';
 import { districts, divisions, upazilas } from '../../model/address-data';
+import { Address } from '../../model/cmsUser.model';
 
 @Component({
   selector: 'app-add-new-address',
@@ -13,6 +14,7 @@ export class AddNewAddressComponent implements OnInit {
   divisions = divisions;
   districts = districts;
   upazilas = upazilas;
+  cmsUserIds: number[] = Array.from({ length: 10 }, (_, i) => i + 1); // Array from 1 to 10
 
   constructor(private formBuilder: FormBuilder, private addressService: AddressService) { }
 
@@ -22,6 +24,7 @@ export class AddNewAddressComponent implements OnInit {
       divisionId: ['', Validators.required],
       districtId: ['', Validators.required],
       upazilaId: ['', Validators.required],
+      cmsUserId: ['', Validators.required],
       isActive: [true, Validators.required]
     });
   }
@@ -29,7 +32,43 @@ export class AddNewAddressComponent implements OnInit {
   onSubmit(): void {
     if (this.addressForm.valid) {
       const formData = this.addressForm.value;
-      this.addressService.addAddress(formData).subscribe(
+      console.log("called");
+      console.log(formData);
+      // Construct Address model object
+      const address: Address = {
+        addressType: formData.addressType,
+        division: {
+          divisionId: formData.divisionId,
+          name: null // Set name field to null
+        },
+        district: {
+          districtId: formData.districtId,
+          name: null // Set name field to null
+        },
+        upazila: {
+          upazilaId: formData.upazilaId,
+          name: null // Set name field to null
+        },
+        cmsUser: {
+          cmsUserId: formData.cmsUserId,
+          userName: null,
+          mobileNumber: null,
+          email: null,
+          name: null,
+          gender: null,
+          addresses: null,
+          academicInfos: null,
+          userStatus: null,
+          isActive: true
+        },
+        isActive: formData.isActive
+      };
+
+
+      console.log(address);
+
+      // Call the service with the Address object
+      this.addressService.addAddress(address).subscribe(
         response => {
           console.log('Address added successfully:', response);
           // Optionally, you can reset the form after successful submission
