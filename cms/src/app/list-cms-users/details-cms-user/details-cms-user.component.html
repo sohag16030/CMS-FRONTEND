@@ -1,26 +1,34 @@
 <div class="container">
-  <h2>User Details</h2>
   <form [formGroup]="cmsUserForm" class="user-details-form">
-    <div class="form-group">
-      <label for="userName">User Name:</label>
-      <input type="text" id="userName" formControlName="userName">
+    <div style="margin-top: 15px; margin-left: 392px;">
+      <button style="background-color: rgb(49, 117, 123)" type="button"  (click)="toggleAddresses()">Edit Basic Info</button>
+      <button style="margin-left: 20px; background-color: rgb(53, 91, 182); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Edit Address </button>
+      <button style="margin-left: 20px; background-color: rgb(48, 137, 110); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Edit Academic Info</button>
     </div>
-    <div class="form-group">
-      <label for="mobileNumber">Mobile Number:</label>
-      <input type="text" id="mobileNumber" formControlName="mobileNumber">
+    <h3>Basic Information:</h3>
+    <div class="basic-info-box">
+      <div class="form-group">
+        <label for="userName">User Name:</label>
+        <input type="text" id="userName" formControlName="userName">
+      </div>
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" formControlName="mobileNumber">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" formControlName="gender">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email">
-    </div>
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name">
-    </div>
-    <div class="form-group">
-      <label for="gender">Gender:</label>
-      <input type="text" id="gender" formControlName="gender">
-    </div>
+    
     <!-- <div class="form-group">
       <label for="isActive">Is Active:</label>
       <input type="checkbox" id="isActive" formControlName="isActive">
@@ -83,8 +91,8 @@
     </div>
   </div>
 
-    <button type="button" (click)="toggleAddresses()">Toggle Addresses</button>
-    <button type="button" (click)="toggleAcademicInfos()">Toggle Academic Infos</button>
+    <button style="background-color: rgb(38, 171, 183)" type="button"  (click)="toggleAddresses()">Addresses</button>
+    <button style="margin-left: 20px; background-color: rgb(48, 90, 154); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Academic Infos</button>
 
   </form>
 </div>
