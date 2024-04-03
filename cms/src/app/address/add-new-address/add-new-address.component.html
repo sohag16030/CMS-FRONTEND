@@ -14,7 +14,7 @@
             <select id="divisionId" name="divisionId" formControlName="divisionId">
                 <option *ngFor="let division of divisions" [value]="division.id">{{ division.name }}</option>
             </select>
-            <div style="color: red;">
+            <div style="color: red; margin-top: -10px;">
                 <small *ngIf="addressForm.get('divisionId').errors?.['required']">
                     Division is a required field
                 </small>
@@ -26,7 +26,7 @@
             <select id="districtId" name="districtId" formControlName="districtId">
                 <option *ngFor="let district of districts" [value]="district.id">{{ district.name }}</option>
             </select>
-            <div style="color: red;">
+            <div style="color: red; margin-top: -10px;">
                 <small *ngIf="addressForm.get('districtId').errors?.['required']">
                     District is a required field
                 </small>
@@ -38,7 +38,7 @@
             <select id="upazilaId" name="upazilaId" formControlName="upazilaId">
                 <option *ngFor="let upazila of upazilas" [value]="upazila.id">{{ upazila.name }}</option>
             </select>
-            <div style="color: red;">
+            <div style="color: red; margin-top: -10px;">
                 <small *ngIf="addressForm.get('upazilaId').errors?.['required']">
                     Upazila is a required field
                 </small>
