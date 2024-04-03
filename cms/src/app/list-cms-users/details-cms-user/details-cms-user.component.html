@@ -21,10 +21,10 @@
       <label for="gender">Gender:</label>
       <input type="text" id="gender" formControlName="gender">
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="isActive">Is Active:</label>
       <input type="checkbox" id="isActive" formControlName="isActive">
-    </div>
+    </div> -->
 
     <div class="form-group" *ngIf="showAddresses">
       <h3>Addresses:</h3>
@@ -47,10 +47,10 @@
             <label for="upazila">Upazila:</label>
             <input type="text" formControlName="upazilaName">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="isActive">Is Active:</label>
             <input type="checkbox" id="isActive" formControlName="isActive">
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -72,7 +72,6 @@
             <label for="academicClass">Academic Class:</label>
             <input type="text" formControlName="academicClass">
           </div>
-          <!-- Display subjects -->
          <!-- Display subjects -->
          <div formArrayName="subjects">
           <div *ngFor="let subject of academicInfo.get('subjects')?.value; let j=index" class="subject">
