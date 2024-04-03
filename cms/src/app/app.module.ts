@@ -10,6 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
 import { ErrorComponent } from './error/error.component';
 import { CmsUserListComponent } from './list-cms-users/list-cms-users.component';
+import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
+import { EditAddressComponent } from './address/edit-address/edit-address.component';
+import { ListAddressComponent } from './address/list-address/list-address.component';
+import { DetailsAddressComponent } from './address/list-address/details-address/details-address.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { CmsUserListComponent } from './list-cms-users/list-cms-users.component'
     CmsUserListComponent,
     DetailsCmsUserComponent,
     EditCmsUserComponent,
-    ErrorComponent
+    ErrorComponent,
+    AddNewAddressComponent,
+    EditAddressComponent,
+    ListAddressComponent,
+    DetailsAddressComponent
   ],
   imports: [
     BrowserModule,

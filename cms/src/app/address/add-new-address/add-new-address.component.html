@@ -1,0 +1,49 @@
+<div class="container">
+    <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+        <h1 style="margin-left: 110px;">Address Form</h1>
+        <div class="form-group">
+            <label for="addressType">Address Type:</label>
+            <select id="addressType" name="addressType" formControlName="addressType">
+                <option value="PERMANENT">Permanent</option>
+                <option value="PRESENT">Present</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="divisionId">Division:</label>
+            <select id="divisionId" name="divisionId" formControlName="divisionId">
+                <option *ngFor="let division of divisions" [value]="division.id">{{ division.name }}</option>
+            </select>
+            <div style="color: red;">
+                <small *ngIf="addressForm.get('divisionId').errors?.['required']">
+                    Division is a required field
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="districtId">District:</label>
+            <select id="districtId" name="districtId" formControlName="districtId">
+                <option *ngFor="let district of districts" [value]="district.id">{{ district.name }}</option>
+            </select>
+            <div style="color: red;">
+                <small *ngIf="addressForm.get('districtId').errors?.['required']">
+                    District is a required field
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="upazilaId">Upazila:</label>
+            <select id="upazilaId" name="upazilaId" formControlName="upazilaId">
+                <option *ngFor="let upazila of upazilas" [value]="upazila.id">{{ upazila.name }}</option>
+            </select>
+            <div style="color: red;">
+                <small *ngIf="addressForm.get('upazilaId').errors?.['required']">
+                    Upazila is a required field
+                </small>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

@@ -6,8 +6,14 @@ import { EditCmsUserComponent } from './edit-cms-user/edit-cms-user.component';
 import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
 import { ErrorComponent } from './error/error.component';
 import { CmsUserListComponent } from './list-cms-users/list-cms-users.component';
+import { ListAddressComponent } from './address/list-address/list-address.component';
+import { DetailsAddressComponent } from './address/list-address/details-address/details-address.component';
+import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
+import { EditAddressComponent } from './address/edit-address/edit-address.component';
 
 const appRoute: Routes = [
+
+  //cmsUser route
   { path: '', component: CmsUserListComponent },
   { path: 'CmsUsers', component: CmsUserListComponent },
   {
@@ -17,6 +23,17 @@ const appRoute: Routes = [
   },
   { path: 'AddCmsUser', component: AddCmsUserComponent },
   { path: 'CmsUser/Edit/:id', component: EditCmsUserComponent },
+
+  //address route
+  { path: 'Addresses', component: ListAddressComponent },
+  {
+    path: 'Addresses', children: [
+      { path: 'Addresse/:id', component: DetailsAddressComponent },
+    ]
+  },
+  { path: 'AddAddress', component: AddNewAddressComponent },
+  { path: 'Addresses/Edit/:id', component: EditAddressComponent },
+
   { path: '**', component: ErrorComponent },
 ];
 

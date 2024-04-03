@@ -2,17 +2,14 @@
     max-width: 800px;
     margin: 0 auto;
   }
-  .basic-info-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
+
   
   .basic-info-box h3 {
     margin-top: 0;
   }
   
   .user-details-form {
+    border-radius: 5px;
     margin-top: 20px;
   }
   
@@ -37,12 +34,22 @@
   input[type="checkbox"] {
     margin-top: 5px;
   }
+
+  .basic-info-box {
+    border: 1px solid #6ec7b8;
+    border-radius: 5px;
+    background-color: rgb(181, 231, 215);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
   
   .address,
   .academic-info {
-    border: 1px solid #ccc;
+    border: 1px solid #6ec7b8;
+    border-radius: 5px;
+    background-color: rgb(181, 231, 215);
     padding: 10px;
-    margin-top: 10px;
+    margin-bottom: 20px;
   }
   
   .address h4,
