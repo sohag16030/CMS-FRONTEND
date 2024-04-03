@@ -36,7 +36,6 @@
                 <td>{{ user.gender }}</td>
                 <td>
                     <button class="details" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId">Details</button>
-                    <button class="edit" [routerLink]="'/CmsUser/Edit/' + user.cmsUserId">Edit</button>
                     <button class="delete" (click)="deleteCmsUser(user.cmsUserId)">Delete</button>
                 </td>
             </tr>
