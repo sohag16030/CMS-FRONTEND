@@ -1,9 +1,10 @@
 <div class="container">
   <form [formGroup]="cmsUserForm" class="user-details-form">
-    <div style="margin-top: 15px; margin-left: 393px;">
-      <button style="background-color: rgb(49, 117, 123)" type="button"  (click)="toggleAddresses()">Edit Basic Info</button>
-      <button style="margin-left: 20px; background-color: rgb(53, 91, 182); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Edit Address </button>
-      <button style="margin-left: 20px; background-color: rgb(48, 137, 110); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Edit Academic Info</button>
+    <div style="margin-top: 15px; margin-left: 448px;">
+      <button style="margin-left: 20px; background-color: rgb(53, 91, 182); margin-bottom: 20px;" type="button"
+        (click)="toggleAcademicInfos()">Add New Address </button>
+      <button style="margin-left: 20px; background-color: rgb(48, 137, 110); margin-bottom: 20px;" type="button"
+        (click)="toggleAcademicInfos()">Add New Academic Info</button>
     </div>
     <h3 style="margin-top: -12px;">Basic Information:</h3>
     <div class="basic-info-box">
@@ -28,7 +29,9 @@
         <input type="text" id="gender" formControlName="gender" readonly>
       </div>
     </div>
-    
+    <button style="background-color: rgb(56, 150, 159)" type="button" (click)="toggleAddresses()">Edit Basic
+      Info</button>
+
     <!-- <div class="form-group">
       <label for="isActive">Is Active:</label>
       <input type="checkbox" id="isActive" formControlName="isActive">
@@ -80,19 +83,26 @@
             <label for="academicClass">Academic Class:</label>
             <input type="text" formControlName="academicClass" readonly>
           </div>
-         <!-- Display subjects -->
-         <div formArrayName="subjects">
-          <div *ngFor="let subject of academicInfo.get('subjects')?.value; let j=index" class="subject">
-            <h5>Subject {{ j + 1 }}</h5>
-            <input type="text" [value]="subject" readonly>
+          <!-- Display subjects -->
+          <div formArrayName="subjects">
+            <div *ngFor="let subject of academicInfo.get('subjects')?.value; let j=index" class="subject">
+              <h5>Subject {{ j + 1 }}</h5>
+              <input type="text" [value]="subject" readonly>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </form>
+  <div>
+    <button style="margin-top: 20px; background-color: rgb(25, 120, 96)" type="button" (click)="toggleAddresses()">View
+      Addresses</button>
+    <button style="margin-left: 20px; background-color: rgb(36, 152, 135); margin-bottom: 20px;" type="button"
+      (click)="toggleAcademicInfos()">View Academic Infos</button>
+      <button style="margin-left: 20px; background-color: rgb(55, 72, 171)" type="button" (click)="toggleAddresses()">Edit
+        Addresses</button>
+    <button style="margin-left: 20px; background-color: rgb(22, 66, 133); margin-bottom: 20px;" type="button"
+      (click)="toggleAcademicInfos()">Edit Academic Infos</button>
   </div>
 
-    <button style="background-color: rgb(38, 171, 183)" type="button"  (click)="toggleAddresses()">Addresses</button>
-    <button style="margin-left: 20px; background-color: rgb(48, 90, 154); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Academic Infos</button>
-
-  </form>
 </div>
