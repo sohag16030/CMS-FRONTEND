@@ -1,31 +1,31 @@
 <div class="container">
   <form [formGroup]="cmsUserForm" class="user-details-form">
-    <div style="margin-top: 15px; margin-left: 392px;">
+    <div style="margin-top: 15px; margin-left: 393px;">
       <button style="background-color: rgb(49, 117, 123)" type="button"  (click)="toggleAddresses()">Edit Basic Info</button>
       <button style="margin-left: 20px; background-color: rgb(53, 91, 182); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Edit Address </button>
       <button style="margin-left: 20px; background-color: rgb(48, 137, 110); margin-bottom: 20px;" type="button" (click)="toggleAcademicInfos()">Edit Academic Info</button>
     </div>
-    <h3>Basic Information:</h3>
+    <h3 style="margin-top: -12px;">Basic Information:</h3>
     <div class="basic-info-box">
       <div class="form-group">
         <label for="userName">User Name:</label>
-        <input type="text" id="userName" formControlName="userName">
+        <input type="text" id="userName" formControlName="userName" readonly>
       </div>
       <div class="form-group">
         <label for="mobileNumber">Mobile Number:</label>
-        <input type="text" id="mobileNumber" formControlName="mobileNumber">
+        <input type="text" id="mobileNumber" formControlName="mobileNumber" readonly>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email">
+        <input type="email" id="email" formControlName="email" readonly>
       </div>
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name">
+        <input type="text" id="name" formControlName="name" readonly>
       </div>
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <input type="text" id="gender" formControlName="gender">
+        <input type="text" id="gender" formControlName="gender" readonly>
       </div>
     </div>
     
@@ -41,19 +41,19 @@
           <h4>Address {{ i + 1 }}</h4>
           <div class="form-group">
             <label for="addressType">Address Type:</label>
-            <input type="text" id="addressType" formControlName="addressType">
+            <input type="text" id="addressType" formControlName="addressType" readonly>
           </div>
           <div class="form-group">
             <label for="division">Division:</label>
-            <input type="text" formControlName="divisionName">
+            <input type="text" formControlName="divisionName" readonly>
           </div>
           <div class="form-group">
             <label for="district">District:</label>
-            <input type="text" formControlName="districtName">
+            <input type="text" formControlName="districtName" readonly>
           </div>
           <div class="form-group">
             <label for="upazila">Upazila:</label>
-            <input type="text" formControlName="upazilaName">
+            <input type="text" formControlName="upazilaName" readonly>
           </div>
           <!-- <div class="form-group">
             <label for="isActive">Is Active:</label>
@@ -70,21 +70,21 @@
           <h4>Academic Info {{ i + 1 }}</h4>
           <div class="form-group">
             <label for="academicLevel">Academic Level:</label>
-            <input type="text" formControlName="academicLevel">
+            <input type="text" formControlName="academicLevel" readonly>
           </div>
           <div class="form-group">
             <label for="grade">Grade:</label>
-            <input type="text" formControlName="grade">
+            <input type="text" formControlName="grade" readonly>
           </div>
           <div class="form-group">
             <label for="academicClass">Academic Class:</label>
-            <input type="text" formControlName="academicClass">
+            <input type="text" formControlName="academicClass" readonly>
           </div>
          <!-- Display subjects -->
          <div formArrayName="subjects">
           <div *ngFor="let subject of academicInfo.get('subjects')?.value; let j=index" class="subject">
             <h5>Subject {{ j + 1 }}</h5>
-            <input type="text" [value]="subject">
+            <input type="text" [value]="subject" readonly>
           </div>
         </div>
       </div>
