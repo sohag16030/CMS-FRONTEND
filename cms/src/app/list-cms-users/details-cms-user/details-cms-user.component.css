@@ -3,7 +3,7 @@
     margin: 0 auto;
   }
   .basic-info-box {
-    border: 1px solid black;
+    border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
   }
