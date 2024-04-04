@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressService } from '../../services/address.service';
 import { districts, divisions, upazilas } from '../../model/address-data';
 import { Address } from '../../model/cmsUser.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-address',
@@ -16,7 +17,7 @@ export class AddNewAddressComponent implements OnInit {
   upazilas = upazilas;
   cmsUserIds: number[] = Array.from({ length: 10 }, (_, i) => i + 1); // Array from 1 to 10
 
-  constructor(private formBuilder: FormBuilder, private addressService: AddressService) { }
+  constructor(private formBuilder: FormBuilder, private addressService: AddressService,private router: Router) { }
 
   ngOnInit(): void {
     this.addressForm = this.formBuilder.group({
@@ -73,6 +74,7 @@ export class AddNewAddressComponent implements OnInit {
           console.log('Address added successfully:', response);
           // Optionally, you can reset the form after successful submission
           this.addressForm.reset();
+          this.router.navigate(['/Addresses']);
         },
         error => {
           console.error('Error adding address:', error);

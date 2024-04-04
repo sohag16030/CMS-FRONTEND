@@ -1,1 +1,37 @@
-<p>list-address works!</p>
+<div class="container">
+    <h2>Address List</h2>
+
+    <table class="address-table">
+        <thead>
+            <tr>
+                <th>Address Type</th>
+                <th>Division</th>
+                <th>District</th>
+                <th>Upazila</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let address of addressList">
+                <td>{{ address.addressType }}</td>
+                <td>{{ address.division.name }}</td>
+                <td>{{ address.district.name }}</td>
+                <td>{{ address.upazila.name }}</td>
+                <td>{{ address.isActive }}</td>
+                <td>
+                    <button class="details">Details</button>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
+        <span>{{ pageNumber + 1 }}</span>
+        <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
+    </div>
+</div>
