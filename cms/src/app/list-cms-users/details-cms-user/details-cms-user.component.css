@@ -36,18 +36,18 @@
   }
 
   .basic-info-box {
-    border: 1px solid #6ec7b8;
+    border: 1px solid #35a4b7;
     border-radius: 5px;
-    background-color: rgb(181, 231, 215);
+    background-color: rgb(189, 215, 213);
     padding: 10px;
     margin-bottom: 20px;
   }
   
   .address,
   .academic-info {
-    border: 1px solid #6ec7b8;
+    border: 1px solid #35a4b7;
     border-radius: 5px;
-    background-color: rgb(181, 231, 215);
+    background-color: rgb(189, 215, 213);
     padding: 10px;
     margin-bottom: 20px;
   }
