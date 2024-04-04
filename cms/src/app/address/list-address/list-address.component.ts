@@ -10,7 +10,7 @@ export class ListAddressComponent implements OnInit {
   addressList: any[] = [];
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 100;
   sortField: string = 'addressId';
   sortOrder: string = 'ASC';
 

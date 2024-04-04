@@ -71,3 +71,18 @@ button:hover {
 button:active {
     opacity: 0.8;
 }
+.filter-section {
+   margin-left: 80%;
+    margin-bottom: 20px;
+}
+
+.filter-section label {
+    margin-right: 10px;
+}
+
+.filter-section select,
+.filter-section input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

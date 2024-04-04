@@ -1,6 +1,11 @@
 <div class="container">
     <h2>Address List</h2>
-
+    <div class="filter-section">
+        <div>
+            <label for="searchInput">Search:</label>
+            <input type="text" id="searchInput" placeholder="Enter...">
+        </div>
+    </div>
     <table class="address-table">
         <thead>
             <tr>
@@ -20,9 +25,8 @@
                 <td>{{ address.upazila.name }}</td>
                 <td>{{ address.isActive }}</td>
                 <td>
-                    <button class="details">Details</button>
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
+                    <button class="edit" [routerLink]="'/Addresses/Address/' + address.addressId">Edit</button>
+                    <button class="delete" (click)="deleteAddress(address.addressId)">Delete</button>
                 </td>
             </tr>
         </tbody>
