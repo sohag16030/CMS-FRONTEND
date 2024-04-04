@@ -9,11 +9,11 @@ import { CmsUserService } from '../services/cmsuser.service';
 export class CmsUserListComponent implements OnInit {
 
   cmsUserList: any[] = [];
-  filterGender: string = 'MALE'; // Default filter value
+  filterGender: string = ''; // Default filter value
   filterEmail: string = ''; // Default filter value
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 300;
   sortField: string = 'cmsUserId';
   sortOrder: string = 'ASC';
 

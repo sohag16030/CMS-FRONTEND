@@ -1,15 +1,15 @@
 <div class="container">
   <form [formGroup]="cmsUserForm" class="user-details-form">
-    <div style="margin-top: 15px; margin-left: 448px;">
+    <!-- <div style="margin-top: 15px; margin-left: 448px;">
 
       <button style="margin-left: 20px; background-color: rgb(44, 131, 136); margin-bottom: 20px;" type="button"
       routerLink="/AddAddress">Add New Address </button>
       <button style="margin-left: 20px; background-color: rgb(48, 137, 110); margin-bottom: 20px;" type="button">Add New Academic Info</button>
-    </div>
+    </div> -->
 
     <h3 style="margin-top: -12px;">Basic Information:</h3>
     <div class="basic-info-box">
-      <button style="margin-left: 660px; background-color: rgb(21, 100, 105)" type="button">Edit Basic
+      <button [routerLink]="'/CmsUsers/' + cmsUser.cmsUserId" style="margin-left: 660px; background-color: rgb(21, 100, 105)" type="button">Edit Basic
         Info</button>
       <div class="form-group">
         <label for="userName">User Name:</label>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </form>
-  
+  <!-- <app-list-address></app-list-address> -->
   <div>
     <button routerLink="/Addresses" style="margin-top: 20px; background-color: rgb(25, 120, 96)" type="button">Addresses</button>
     <button style="margin-left: 10px; background-color: rgb(36, 152, 135); margin-bottom: 20px;" type="button">Academic Infos</button>
