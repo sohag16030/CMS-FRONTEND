@@ -48,6 +48,7 @@ export class EditAddressComponent implements OnInit {
         console.log(address);
         // Patch the fetched address details to the form controls
         this.addressForm.patchValue({
+          addressId : this.addressId,
           addressType: address.addressType,
           divisionId: address.division.divisionId,
           districtId: address.district.districtId,
@@ -63,10 +64,11 @@ export class EditAddressComponent implements OnInit {
   onSubmit() {
     if (this.addressForm.valid) {
       const formData = this.addressForm.value;
-      console.log("called");
+      console.log("I am here now");
       console.log(formData);
       // Construct Address model object
       const address: Address = {
+        addressId : this.addressId,
         addressType: formData.addressType,
         division: {
           divisionId: formData.divisionId,
@@ -98,9 +100,9 @@ export class EditAddressComponent implements OnInit {
 
       console.log(address);
 
-      this.addressService.addAddress(address).subscribe(
+      this.addressService.updateAddress(this.addressId,address).subscribe(
         response => {
-          console.log('Address added successfully:', response);
+          console.log('Address updated successfully:', response);
           this.addressForm.reset();
           this.router.navigate(['/Addresses']);
         },

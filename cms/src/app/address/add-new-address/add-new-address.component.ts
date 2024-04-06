@@ -17,7 +17,7 @@ export class AddNewAddressComponent implements OnInit {
   upazilas = upazilas;
   cmsUserIds: number[] = Array.from({ length: 10 }, (_, i) => i + 1); // Array from 1 to 10
 
-  constructor(private formBuilder: FormBuilder, private addressService: AddressService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private addressService: AddressService, private router: Router) { }
 
   ngOnInit(): void {
     this.addressForm = this.formBuilder.group({
@@ -37,6 +37,7 @@ export class AddNewAddressComponent implements OnInit {
       console.log(formData);
       // Construct Address model object
       const address: Address = {
+        addressId: null,
         addressType: formData.addressType,
         division: {
           divisionId: formData.divisionId,

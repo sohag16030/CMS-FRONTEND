@@ -15,7 +15,6 @@
                 <th>Division</th>
                 <th>District</th>
                 <th>Upazila</th>
-                <th>Active</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,7 +24,6 @@
                 <td>{{ address.division.name }}</td>
                 <td>{{ address.district.name }}</td>
                 <td>{{ address.upazila.name }}</td>
-                <td>{{ address.isActive }}</td>
                 <td>
                     <button class="edit" [routerLink]="'/Addresses/' + address.addressId">Edit</button>
                     <button class="delete" (click)="deleteAddress(address.addressId)">Delete</button>

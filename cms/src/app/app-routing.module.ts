@@ -21,7 +21,7 @@ const appRoute: Routes = [
     ]
   },
   { path: 'AddCmsUser', component: AddCmsUserComponent },
-  { path: 'CmsUser/:id', component: EditCmsUserComponent },
+  { path: 'CmsUsers/:cmsUserId', component: EditCmsUserComponent },
 
   //address route
   { path: 'Addresses', component: ListAddressComponent },

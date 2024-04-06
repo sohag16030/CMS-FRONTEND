@@ -23,15 +23,18 @@
                 <small *ngIf="reactiveForm.get('password').errors?.['required']">
                     Password is a required field
                 </small>
+                <small *ngIf="reactiveForm.get('password').errors?.['noSpaceAllowed']">
+                    User Name can not contain a space
+                </small>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="name">Name:</label>
+            <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" formControlName="name" />
             <div style="color: red;">
                 <small *ngIf="reactiveForm.get('name').errors?.['required']">
-                    Name is a required field
+                    Full Name is a required field
                 </small>
             </div>
         </div>
@@ -39,14 +42,9 @@
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" formControlName="email" />
-            <div style="color: red;">
-                <span style="color: red;" *ngIf="!reactiveForm.get('email').valid && reactiveForm.get('email').touched">
-                    This email you entered is not a valid email
-                </span>
-                <small *ngIf="reactiveForm.get('email').errors?.['required']">
-                    Email is a required field
-                </small>
-            </div>
+            <small style="color: red;" *ngIf="!reactiveForm.get('email').valid && reactiveForm.get('email').touched">
+                This email you entered is not a valid email
+            </small>
         </div>
 
         <div class="form-group">
@@ -56,15 +54,19 @@
                 <small *ngIf="reactiveForm.get('mobileNumber').errors?.['required']">
                     Mobile Number is a required field
                 </small>
+                <small *ngIf="reactiveForm.get('mobileNumber').errors?.['noSpaceAllowed']">
+                    Mobile Number can not contain a space
+                </small>
             </div>
         </div>
 
         <div class="form-group">
             <label for="gender">Gender:</label>
             <select id="gender" name="gender" formControlName="gender">
-                <option value="MALE">Male</option>
-                <option value="FEMALE">Female</option>
-                <option value="OTHER">Other</option>
+                <option disabled selected value="">Select Gender</option>
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+                <option value="OTHER">OTHER</option>
             </select>
             <div style="color: red;">
                 <small *ngIf="reactiveForm.get('gender').errors?.['required']">

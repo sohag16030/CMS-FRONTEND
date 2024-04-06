@@ -12,6 +12,7 @@ export class CmsUser {
   }
   
   export class Address {
+    addressId : number;
     addressType: string;
     division: Division;
     district: District;

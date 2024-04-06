@@ -50,12 +50,13 @@
             <select id="cmsUserId" name="cmsUserId" formControlName="cmsUserId">
                 <option *ngFor="let id of cmsUserIds" [value]="id">{{ id }}</option>
             </select>
-        </div>
-        <div style="color: red; margin-top: -10px;">
-            <small *ngIf="addressForm.get('cmsUserId').errors?.['required']">
-                User Id is a required field
-            </small>
-        </div>
-        <button type="submit">Submit</button>  <button routerLink="/Addresses" style="background-color: rgb(58, 150, 124); margin-left: 10px;" type="submit">Back</button>
+            <div style="color: red; margin-top: -10px;">
+                <small *ngIf="addressForm.get('cmsUserId').errors?.['required']">
+                    User Id is a required field
+                </small>
+            </div>
+        </div> <!-- Closing div for "User Id" form-group -->
+
+        <button type="submit">Submit</button>
     </form>
 </div>

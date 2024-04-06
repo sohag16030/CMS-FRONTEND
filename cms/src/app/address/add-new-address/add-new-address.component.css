@@ -4,7 +4,7 @@ form {
   background-color: rgb(189, 215, 213);
   padding: 10px;
   max-width: 550px;
-  margin-left: 550px;
+  margin: 10px auto;
   margin-top: 10px;
 }
 

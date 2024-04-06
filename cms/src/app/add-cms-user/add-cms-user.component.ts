@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CmsUserService } from '../services/cmsuser.service';
 import { Router } from '@angular/router';
 
@@ -20,15 +20,23 @@ export class AddCmsUserComponent implements OnInit {
 
   ngOnInit() {
     this.reactiveForm = this.fb.group({
-      userName: [null, Validators.required],
-      password: [null, Validators.required],
-      mobileNumber: [null, Validators.required],
+      userName: [null, Validators.required,this.noSpaceAllowed],
+      password: [null, Validators.required,this.noSpaceAllowed],
+      mobileNumber: [null, Validators.required,this.noSpaceAllowed],
       email: [null, [Validators.required, Validators.email]],
       name: [null, Validators.required],
-      gender: [null, Validators.required]
+      gender: ['', Validators.required]
     });
   }
-
+  noSpaceAllowed(control: AbstractControl): Promise<ValidationErrors | null> {
+    return new Promise((resolve) => {
+      if (control.value !== null && control.value.indexOf(' ') !== -1) {
+        resolve({ noSpaceAllowed: true });
+      } else {
+        resolve(null);
+      }
+    });
+  }
   onSubmit() {
     if (this.reactiveForm.valid) {
       const formData = this.reactiveForm.value;
