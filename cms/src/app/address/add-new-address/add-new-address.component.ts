@@ -21,7 +21,7 @@ export class AddNewAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.addressForm = this.formBuilder.group({
-      addressType: ['PERMANENT', Validators.required],
+      addressType: ['', Validators.required],
       divisionId: ['', Validators.required],
       districtId: ['', Validators.required],
       upazilaId: ['', Validators.required],
