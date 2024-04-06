@@ -26,13 +26,6 @@ export class EditCmsUserComponent implements OnInit {
       name: ['', [Validators.required]],
       gender: ['', Validators.required]
     });
-    // this.cmsUserForm = this.formBuilder.group({
-    //   userName: [''], 
-    //   mobileNumber: [''], 
-    //   email: [''],
-    //   name: [''], 
-    //   gender: ['']
-    // });
   }
 
   ngOnInit(): void {
