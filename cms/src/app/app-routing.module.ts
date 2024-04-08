@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DetailsCmsUserComponent } from './list-cms-users/details-cms-user/details-cms-user.component';
-import { EditCmsUserComponent } from './edit-cms-user/edit-cms-user.component';
-import { AddCmsUserComponent } from './add-cms-user/add-cms-user.component';
+import { AddCmsUserComponent } from './cmsUser/add-cms-user/add-cms-user.component';
 import { ErrorComponent } from './error/error.component';
 import { CmsUserListComponent } from './list-cms-users/list-cms-users.component';
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
+import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 
 const appRoute: Routes = [
 
