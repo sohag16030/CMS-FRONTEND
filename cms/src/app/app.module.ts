@@ -13,6 +13,7 @@ import { AddNewAddressComponent } from './address/add-new-address/add-new-addres
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
+import { ListContentsComponent } from './content/list-contents/list-contents.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.comp
     AddNewAddressComponent,
     EditAddressComponent,
     ListAddressComponent,
+    ListContentsComponent,
   ],
   imports: [
     BrowserModule,
