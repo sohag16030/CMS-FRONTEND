@@ -111,7 +111,7 @@ button {
     transition: background-color 0.3s;
 }
 
-button.details {
+button.view {
     background-color: #28a745;
     color: #fff;
 }
@@ -140,4 +140,8 @@ button:hover {
 
 button:active {
     opacity: 0.8;
+}
+
+button.download{
+    background-color: #4330ac;
 }
