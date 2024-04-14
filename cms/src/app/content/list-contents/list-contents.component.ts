@@ -21,7 +21,7 @@ export class ListContentsComponent {
   sortField: string = 'contentId';
   sortOrder: string = 'ASC';
 
-  constructor(private contentService: ContentService,private router: Router) {}
+  constructor(private contentService: ContentService, private router: Router) { }
 
   ngOnInit() {
     this.getContentList();
@@ -82,11 +82,11 @@ export class ListContentsComponent {
   }
 
   upload() {
-    if (this.file && this.userId) { 
+    if (this.file && this.userId) {
       this.contentService.uploadfile(this.file, this.userId).subscribe(resp => {
         // Update the content list
         this.getContentList();
-  
+
         // Reset form fields
         this.file = null;
         this.userId = null;
@@ -98,7 +98,7 @@ export class ListContentsComponent {
       alert("Please enter a user ID");
     }
   }
-  
+
 
   toggleUploadForm() {
     this.showUploadForm = !this.showUploadForm;
@@ -106,24 +106,31 @@ export class ListContentsComponent {
 
   downloadContent(content: any) {
     this.contentService.downloadContent(content.contentId).subscribe(
-      (response: any) => {
-        const filename = this.getFilenameFromResponse(response);
-        this.saveFile(response.body, filename);
-      },
-      (error) => {
-        console.error('Error occurred while downloading content:', error);
-      }
+        (response: any) => {
+            const headers = response.headers;
+            const contentDisposition = headers.get('Content-Disposition');
+            // Extract filename from Content-Disposition header
+            let filename = '';
+            if (contentDisposition) {
+                const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                const matches = filenameRegex.exec(contentDisposition);
+                if (matches && matches.length > 1) {
+                    filename = matches[1].replace(/['"]/g, '');
+                    
+                }
+            }
+            // Save file with the extracted filename
+            this.saveFile(response.body, filename);
+        },
+        (error) => {
+            console.error('Error occurred while downloading content:', error);
+        }
     );
-  }
-  
-  private getFilenameFromResponse(response: any): string {
-    const contentDispositionHeader = response.headers.get('content-disposition');
-    const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-    const matches = filenameRegex.exec(contentDispositionHeader);
-    return matches && matches.length > 1 ? matches[1].replace(/['"]/g, '') : 'download';
-  }
-  
+}
+
+
   private saveFile(blob: Blob, filename: string): void {
+    console.log("filename:"+filename);
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
