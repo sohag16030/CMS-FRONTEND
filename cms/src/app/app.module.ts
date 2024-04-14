@@ -14,6 +14,7 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
+import { ViewContentComponent } from './content/view-content/view-content.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ListContentsComponent } from './content/list-contents/list-contents.com
     EditAddressComponent,
     ListAddressComponent,
     ListContentsComponent,
+    ViewContentComponent,
   ],
   imports: [
     BrowserModule,

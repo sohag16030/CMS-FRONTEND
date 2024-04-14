@@ -38,7 +38,7 @@
                 <td>{{ content.title }}</td>
                 <td>{{ content.type }}</td>
                 <td>
-                    <button class="view">View</button>
+                    <button [routerLink]="'/Contents/' + content.contentId">View</button>
                     <button class="download">Download</button>
                     <button class="delete">Delete</button>
                 </td>

@@ -10,6 +10,7 @@ import { AddNewAddressComponent } from './address/add-new-address/add-new-addres
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
+import { ViewContentComponent } from './content/view-content/view-content.component';
 
 const appRoute: Routes = [
 
@@ -31,7 +32,7 @@ const appRoute: Routes = [
   
   //content route
   { path: 'Contents', component: ListContentsComponent },
-  //{ path: 'Contents', component: AddNewAddressComponent },
+  { path: 'Contents/:contentId', component: ViewContentComponent },
   //{ path: 'Addresses/:addressId', component: EditAddressComponent },
 
   { path: '**', component: ErrorComponent },
