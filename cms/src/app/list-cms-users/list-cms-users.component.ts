@@ -74,14 +74,16 @@ export class CmsUserListComponent implements OnInit {
 
   deleteCmsUser(cmsUserId: number) {
     console.log(cmsUserId);
-    this.cmsUserService.deleteCmsUser(cmsUserId).subscribe(
-      () => {
-        console.log('Record deleted successfully.');
-        this.getCmsUserList(); // Refresh CMS user list after deletion
-      },
-      (error) => {
-        console.error('Error occurred while deleting CMS user:', error);
-      }
-    );
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.cmsUserService.deleteCmsUser(cmsUserId).subscribe(
+        () => {
+          console.log('Record deleted successfully.');
+          this.getCmsUserList(); // Refresh CMS user list after deletion
+        },
+        (error) => {
+          console.error('Error occurred while deleting CMS user:', error);
+        }
+      );
+    }
   }
 }

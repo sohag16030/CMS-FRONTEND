@@ -141,18 +141,18 @@ export class ListContentsComponent {
     window.URL.revokeObjectURL(url);
   }
 
-  // deleteContent(content: any) {
-  //   if (confirm('Are you sure you want to delete this content?')) {
-  //     this.contentService.deleteContent(content.contentId).subscribe(
-  //       () => {
-  //         // Content deleted successfully, update the content list
-  //         this.getContentList();
-  //       },
-  //       (error) => {
-  //         console.error('Error occurred while deleting content:', error);
-  //       }
-  //     );
-  //   }
-  // }
+  deleteContent(contentId: any) {
+    if (confirm('Are you sure you want to delete this content?')) {
+      this.contentService.deleteContent(contentId).subscribe(
+        () => {
+          // Content deleted successfully, update the content list
+          this.getContentList();
+        },
+        (error) => {
+          console.error('Error occurred while deleting content:', error);
+        }
+      );
+    }
+  }
 
 }

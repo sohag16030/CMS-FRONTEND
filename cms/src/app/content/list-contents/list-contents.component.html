@@ -40,7 +40,7 @@
                 <td>
                     <button>Edit</button>
                     <button class="view" (click)="downloadContent(content)">Download</button>
-                    <button class="delete" >Delete</button>
+                    <button class="delete" (click)="deleteContent(content.contentId)">Delete</button>
                 </td>
             </tr>
         </tbody>
