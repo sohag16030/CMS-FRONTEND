@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ContentService } from '../../services/content.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-contents',
@@ -20,7 +21,7 @@ export class ListContentsComponent {
   sortField: string = 'contentId';
   sortOrder: string = 'ASC';
 
-  constructor(private contentService: ContentService) {}
+  constructor(private contentService: ContentService,private router: Router) {}
 
   ngOnInit() {
     this.getContentList();
@@ -83,7 +84,13 @@ export class ListContentsComponent {
   upload() {
     if (this.file && this.userId) { 
       this.contentService.uploadfile(this.file, this.userId).subscribe(resp => {
-        alert("Uploaded");
+        // Update the content list
+        this.getContentList();
+  
+        // Reset form fields
+        this.file = null;
+        this.userId = null;
+        // this.showUploadForm = false; // Close the upload form if it's open
       });
     } else if (!this.file) {
       alert("Please select a file first");
@@ -91,6 +98,7 @@ export class ListContentsComponent {
       alert("Please enter a user ID");
     }
   }
+  
 
   toggleUploadForm() {
     this.showUploadForm = !this.showUploadForm;
