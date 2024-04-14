@@ -38,8 +38,8 @@
                 <td>{{ content.title }}</td>
                 <td>{{ content.type }}</td>
                 <td>
-                    <button >Edit</button>
-                    <button class="view" >Download</button>
+                    <button>Edit</button>
+                    <button class="view" (click)="downloadContent(content)">Download</button>
                     <button class="delete" >Delete</button>
                 </td>
             </tr>

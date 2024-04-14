@@ -12,14 +12,28 @@ export class ContentService {
     constructor(private httpClient: HttpClient) { }
 
     public uploadfile(file: File, userId: number): Observable<any> {
-        let formParams = new FormData();
+        const formParams = new FormData();
         formParams.append('contents', file);
         return this.httpClient.post(`${BASIC_URL}/contents/${userId}`, formParams);
     }
 
     getAllContents(params: any): Observable<any> {
-        console.log(params);
         return this.httpClient.get(`${BASIC_URL}/contents`, { params });
     }
-    
+
+    downloadContent(contentId: number): Observable<any> {
+        // Return the observable directly
+        return this.httpClient.get(`${BASIC_URL}/contents/download/${contentId}`, {
+            responseType: 'blob', // Ensure response type is set to blob
+            observe: 'response'   // Observe the full HTTP response to access headers
+        });
+    }
+
+    deleteContent(contentId: number): Observable<any> {
+        return this.httpClient.delete(`${BASIC_URL}/contents/${contentId}`);
+    }
+
+    updateContent(contentId: number, newData: any): Observable<any> {
+        return this.httpClient.put(`${BASIC_URL}/contents/${contentId}`, newData);
+    }
 }

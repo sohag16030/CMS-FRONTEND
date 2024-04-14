@@ -90,7 +90,7 @@ export class ListContentsComponent {
         // Reset form fields
         this.file = null;
         this.userId = null;
-        // this.showUploadForm = false; // Close the upload form if it's open
+        this.showUploadForm = false; // Close the upload form if it's open
       });
     } else if (!this.file) {
       alert("Please select a file first");
@@ -103,4 +103,49 @@ export class ListContentsComponent {
   toggleUploadForm() {
     this.showUploadForm = !this.showUploadForm;
   }
+
+  downloadContent(content: any) {
+    this.contentService.downloadContent(content.contentId).subscribe(
+      (response: any) => {
+        const filename = this.getFilenameFromResponse(response);
+        this.saveFile(response.body, filename);
+      },
+      (error) => {
+        console.error('Error occurred while downloading content:', error);
+      }
+    );
+  }
+  
+  private getFilenameFromResponse(response: any): string {
+    const contentDispositionHeader = response.headers.get('content-disposition');
+    const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+    const matches = filenameRegex.exec(contentDispositionHeader);
+    return matches && matches.length > 1 ? matches[1].replace(/['"]/g, '') : 'download';
+  }
+  
+  private saveFile(blob: Blob, filename: string): void {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
+
+  // deleteContent(content: any) {
+  //   if (confirm('Are you sure you want to delete this content?')) {
+  //     this.contentService.deleteContent(content.contentId).subscribe(
+  //       () => {
+  //         // Content deleted successfully, update the content list
+  //         this.getContentList();
+  //       },
+  //       (error) => {
+  //         console.error('Error occurred while deleting content:', error);
+  //       }
+  //     );
+  //   }
+  // }
+
 }
