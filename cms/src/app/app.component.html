@@ -3,7 +3,7 @@
     <nav class="navbar">
       <ul class="navbar-nav">
         <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-          <a routerLink="" class="nav-link">USERS</a>
+          <a routerLink="" class="nav-link">HOME</a>
         </li>
         <!-- <li class="nav-item" [routerLinkActive]="'active'">
           <a routerLink="GeoLocation" class="nav-link">GEO LOCATIONS(ADMIN)</a>
@@ -14,21 +14,21 @@
         <li class="nav-item" [routerLinkActive]="'active'">
           <a routerLink="Contents" class="nav-link">CONTENTS PLANET</a>
         </li>
-        <!-- <li class="nav-item" [routerLinkActive]="'active'">
-          <a routerLink="About" class="nav-link">ABOUT(ADMIN/USER)</a>
+        <li class="nav-item" [routerLinkActive]="'active'">
+          <a routerLink="About" class="nav-link">ABOUT</a>
         </li>
         <li class="nav-item" [routerLinkActive]="'active'">
-          <a routerLink="Contact" class="nav-link">CONTACT(ADMIN/USER)</a>
-        </li> -->
+          <a routerLink="Contact" class="nav-link">CONTACT</a>
+        </li>
         <span style="float:right">
-          <li [routerLink]="'/AddCmsUser'"><a>REGISTER(USER)</a></li>
-        </span>
-        <!-- <span style="float:right;margin-right: 10px;">
-          <li><a>LOGOUT(ADMIN/USER)</a></li>
+          <li [routerLink]="'/AddCmsUser'"><a>REGISTER</a></li>
         </span>
         <span style="float:right;margin-right: 10px;">
-          <li><a>LOGIN(ADMIN/USER)</a></li>
-        </span> -->
+          <li><a>LOGOUT</a></li>
+        </span>
+        <span style="float:right;margin-right: 10px;">
+          <li><a>LOGIN</a></li>
+        </span>
       </ul>
     </nav>
     
