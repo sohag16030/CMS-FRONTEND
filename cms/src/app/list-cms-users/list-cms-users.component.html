@@ -12,7 +12,8 @@
         </div>
         <div>
             <label for="searchInput">Search:</label>
-            <input type="text" id="searchInput" [(ngModel)]="filterEmail" (ngModelChange)="applyFilter()" placeholder="Enter email...">
+            <input type="text" id="searchInput" [(ngModel)]="filterEmail" (ngModelChange)="applyFilter()"
+                placeholder="Enter email...">
         </div>
     </div>
 
@@ -35,8 +36,10 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.gender }}</td>
                 <td>
-                    <button class="details" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId" matTooltip="Details"><i class="fas fa-info-circle"></i></button>
-                    <button class="delete" (click)="deleteCmsUser(user.cmsUserId)" matTooltip="Delete"><i class="fas fa-trash-alt"></i></button>
+                    <button class="details" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId" matTooltip="Details"><i
+                            class="fas fa-info-circle"></i></button>
+                    <button class="delete" (click)="deleteCmsUser(user.cmsUserId)" matTooltip="Delete"><i
+                            class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -45,7 +48,10 @@
     <!-- Pagination -->
     <div class="pagination">
         <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
-        <span>{{ pageNumber + 1 }}</span>
+        <div *ngFor="let page of getPageArray()">
+            <button class="pagination" (click)="goToPage(page)" [disabled]="page === pageNumber">{{ page + 1 }}</button>
+        </div>
         <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
     </div>
+
 </div>

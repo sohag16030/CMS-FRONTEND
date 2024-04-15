@@ -86,4 +86,16 @@ export class CmsUserListComponent implements OnInit {
       );
     }
   }
+
+  // Modify the method to generate an array of page numbers
+  getPageArray(): number[] {
+    return Array.from({ length: this.numberOfPages }, (_, i) => i);
+  }
+
+  // Add a method to navigate to a specific page
+  goToPage(page: number) {
+    this.pageNumber = page;
+    this.getCmsUserList();
+  }
+
 }
