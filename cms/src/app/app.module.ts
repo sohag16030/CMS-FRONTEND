@@ -14,6 +14,8 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,12 @@ import { ListContentsComponent } from './content/list-contents/list-contents.com
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
