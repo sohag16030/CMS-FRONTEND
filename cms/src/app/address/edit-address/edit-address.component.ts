@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddressService } from '../../services/address.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms'; // Import FormBuilder and FormGroup
-import { Address } from '../../model/cmsUser.model';
+import { Address } from '../../model/cmsuser.model';
 import { districts, divisions, upazilas } from '../../model/address-data';
 
 @Component({

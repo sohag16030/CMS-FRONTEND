@@ -15,9 +15,9 @@ import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.comp
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './auth/login/login.component';
-import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
-import { UserHomePageComponent } from './user-home-page/user-home-page.component';
-import { DefaultHomePageComponent } from './default-home-page/default-home-page.component';
+import { AdminHomePageComponent } from './home/admin-home-page/admin-home-page.component';
+import { UserHomePageComponent } from './home/user-home-page/user-home-page.component';
+import { DefaultHomePageComponent } from './home/default-home-page/default-home-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TokenInterceptorService } from './services/token.interceptor.service';
 

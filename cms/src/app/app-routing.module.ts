@@ -11,9 +11,9 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
 import { LoginComponent } from './auth/login/login.component';
-import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
-import { UserHomePageComponent } from './user-home-page/user-home-page.component';
-import { DefaultHomePageComponent } from './default-home-page/default-home-page.component';
+import { AdminHomePageComponent } from './home/admin-home-page/admin-home-page.component';
+import { UserHomePageComponent } from './home/user-home-page/user-home-page.component';
+import { DefaultHomePageComponent } from './home/default-home-page/default-home-page.component';
 
 const appRoute: Routes = [
 
