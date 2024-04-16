@@ -17,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { TokenInterceptorComponent } from './auth/token-interceptor/token-interceptor.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { TokenInterceptorComponent } from './auth/token-interceptor/token-interc
     LoginComponent,
     LogoutComponent,
     TokenInterceptorComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

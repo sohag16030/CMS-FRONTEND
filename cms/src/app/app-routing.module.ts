@@ -11,9 +11,11 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
 import { LoginComponent } from './auth/login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoute: Routes = [
-
+  //Home page
+  { path: 'Home', component: HomeComponent },
   //auth route
   { path: 'Login', component: LoginComponent },
 
