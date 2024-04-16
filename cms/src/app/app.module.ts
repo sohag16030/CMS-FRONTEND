@@ -15,15 +15,15 @@ import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.comp
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './auth/login/login.component';
-import { TokenInterceptorComponent } from './auth/token-interceptor/token-interceptor.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { DefaultHomePageComponent } from './default-home-page/default-home-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { TokenInterceptorService } from './services/token.interceptor.service';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     AddCmsUserComponent,
     CmsUserListComponent,
     DetailsCmsUserComponent,
@@ -34,7 +34,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ListAddressComponent,
     ListContentsComponent,
     LoginComponent,
-    TokenInterceptorComponent,
     AdminHomePageComponent,
     UserHomePageComponent,
     DefaultHomePageComponent,
@@ -49,7 +48,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatTooltipModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorComponent, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

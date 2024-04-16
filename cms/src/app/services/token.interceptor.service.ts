@@ -1,15 +1,10 @@
-import { Component, Injectable } from '@angular/core';
+// token-interceptor.service.ts
+import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Component({
-  selector: 'app-token-interceptor',
-  templateUrl: './token-interceptor.component.html',
-  styleUrl: './token-interceptor.component.css'
-})
-
 @Injectable()
-export class TokenInterceptorComponent implements HttpInterceptor {
+export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = localStorage.getItem('access_token');
@@ -23,4 +18,4 @@ export class TokenInterceptorComponent implements HttpInterceptor {
     return next.handle(request);
   }
 
-} 
+}
