@@ -17,7 +17,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { TokenInterceptorComponent } from './auth/token-interceptor/token-interceptor.component';
-import { HomeComponent } from './home/home.component';
+import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { DefaultHomePageComponent } from './default-home-page/default-home-page.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     LogoutComponent,
     TokenInterceptorComponent,
-    HomeComponent,
+    AdminHomePageComponent,
+    UserHomePageComponent,
+    DefaultHomePageComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,

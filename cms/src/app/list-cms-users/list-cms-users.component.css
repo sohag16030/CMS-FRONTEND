@@ -126,6 +126,6 @@ button:active {
 }
 
 .pagination button:disabled {
-    background-color: #ccc;
+    background-color: #a39898;
     cursor: not-allowed;
 }

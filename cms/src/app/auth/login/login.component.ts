@@ -18,12 +18,21 @@ export class LoginComponent {
   login() {
     this.authService.login(this.username, this.password).subscribe(
       (response: any) => {
-        // Successful login
-        // Store tokens in local storage
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('refresh_token', response.refresh_token);
-        // Redirect or perform any other actions
-        this.router.navigate(['/Home']);
+
+        // Decode JWT token to extract roles
+        const jwtToken = this.authService.decodeJwtToken(response.access_token);
+        const roles = jwtToken.roles;
+        debugger
+        // Check if the user has ROLE_ADMIN or ROLE_USER role
+        if (roles.includes('ROLE_ADMIN')) {
+          this.router.navigate(['/AdminHomePage']);
+        } else if (roles.includes('ROLE_USER')) {
+          this.router.navigate(['/UserHomePage']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       (error) => {
         this.error = 'Invalid username or password';

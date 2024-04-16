@@ -1,0 +1,33 @@
+.main-container{
+    background-color: hsla(175, 66%, 41%, 0.164);
+    width: 90%;
+    margin: 0 auto;
+  }
+  .navbar {
+      width: 55%px;
+      background-color: #14464d;
+      color: #e7dbdb;
+      padding: 10px 20px;
+    }
+    
+    .navbar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .nav-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: #fff;
+      padding: 5px 10px;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: #1f9bd9;
+    }
