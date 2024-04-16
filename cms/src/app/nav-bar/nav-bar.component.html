@@ -10,11 +10,17 @@
                 </li>
                 <li class="nav-item" [routerLinkActive]="'active'">
                     <a routerLink="Contents" class="nav-link">CONTENTS PLANET</a> -->
-                <li style="float:right">
+
+                <!-- Add *ngIf directives to conditionally show links based on authentication status -->
+                
+                <li *ngIf="!isAuthenticated" style="float:right">
                     <a routerLink="Login" class="nav-link">LOGIN</a>
                 </li>
-                <li style="float:right">
+                <li *ngIf="!isAuthenticated" style="float:right">
                     <a routerLink="AddCmsUser" class="nav-link">REGISTER</a>
+                </li>
+                <li *ngIf="isAuthenticated" style="float:right">
+                    <a (click)="logout()" routerLink="Login" class="nav-link">LOGOUT</a>
                 </li>
             </ul>
         </nav>
