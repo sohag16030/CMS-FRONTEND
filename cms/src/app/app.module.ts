@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DetailsCmsUserComponent } from './list-cms-users/details-cms-user/details-cms-user.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCmsUserComponent } from './cmsUser/add-cms-user/add-cms-user.component';
 import { ErrorComponent } from './error/error.component';
@@ -14,8 +13,10 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './auth/login/login.component';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { TokenInterceptorComponent } from './auth/token-interceptor/token-interceptor.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     EditAddressComponent,
     ListAddressComponent,
     ListContentsComponent,
+    LoginComponent,
+    LogoutComponent,
+    TokenInterceptorComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule
   ],
   providers: [
-    provideAnimationsAsync()
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorComponent, multi: true }
   ],
   bootstrap: [AppComponent]
 })

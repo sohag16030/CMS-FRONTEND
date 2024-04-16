@@ -10,8 +10,12 @@ import { AddNewAddressComponent } from './address/add-new-address/add-new-addres
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
 import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const appRoute: Routes = [
+
+  //auth route
+  { path: 'Login', component: LoginComponent },
 
   //cmsUser route
   { path: '', component: CmsUserListComponent },
