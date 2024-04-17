@@ -7,16 +7,17 @@ import { Observable } from 'rxjs';
 export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const accessToken = localStorage.getItem('access_token');
-    if (accessToken) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      });
-    }
     debugger
-    return next.handle(request);
-  }
+    console.log('Request headers:', request.headers.keys()); // Log request headers
+      const accessToken = localStorage.getItem('access_token');
+      if (accessToken) {
+        request = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        });
+      }
+      return next.handle(request);
+    }
 
 }

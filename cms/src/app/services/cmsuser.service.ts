@@ -20,7 +20,7 @@ export class CmsUserService {
     }
 
     getAllCmsUsers(params: any): Observable<any> {
-        console.log(params);
+        debugger
         return this.http.get(`${BASIC_URL}/api/cmsUsers`, { params });
     }
 
