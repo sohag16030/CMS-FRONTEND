@@ -6,7 +6,7 @@ import { DetailsCmsUserComponent } from './list-cms-users/details-cms-user/detai
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCmsUserComponent } from './cmsUser/add-cms-user/add-cms-user.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './errorPages/error/error.component';
 import { CmsUserListComponent } from './list-cms-users/list-cms-users.component';
 import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
@@ -20,6 +20,7 @@ import { UserHomePageComponent } from './home/user-home-page/user-home-page.comp
 import { DefaultHomePageComponent } from './home/default-home-page/default-home-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TokenInterceptorService } from './services/token.interceptor.service';
+import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TokenInterceptorService } from './services/token.interceptor.service';
     UserHomePageComponent,
     DefaultHomePageComponent,
     NavBarComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DetailsCmsUserComponent } from './list-cms-users/details-cms-user/details-cms-user.component';
 import { AddCmsUserComponent } from './cmsUser/add-cms-user/add-cms-user.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './errorPages/error/error.component';
 import { CmsUserListComponent } from './list-cms-users/list-cms-users.component';
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
@@ -14,36 +14,39 @@ import { LoginComponent } from './auth/login/login.component';
 import { AdminHomePageComponent } from './home/admin-home-page/admin-home-page.component';
 import { UserHomePageComponent } from './home/user-home-page/user-home-page.component';
 import { DefaultHomePageComponent } from './home/default-home-page/default-home-page.component';
+import { AuthGuard } from './services/authguard.service';
+import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
 
 const appRoute: Routes = [
 
   //Home page
   { path: '', component: DefaultHomePageComponent },
-  { path: 'AdminHomePage', component: AdminHomePageComponent },
-  { path: 'UserHomePage', component: UserHomePageComponent },
+  { path: 'AdminHomePage', component: AdminHomePageComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
+  { path: 'UserHomePage', component: UserHomePageComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_USER'] } },
 
   //auth route
   { path: 'Login', component: LoginComponent },
 
   //cmsUser route
-  { path: 'CmsUsers', component: CmsUserListComponent },
+  { path: 'CmsUsers', component: CmsUserListComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
   {
     path: 'CmsUsers', children: [
-      { path: 'CmsUser/:id', component: DetailsCmsUserComponent },
+      { path: 'CmsUser/:id', component: DetailsCmsUserComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
     ]
   },
   { path: 'AddCmsUser', component: AddCmsUserComponent },
-  { path: 'CmsUsers/:cmsUserId', component: EditCmsUserComponent },
+  { path: 'CmsUsers/:cmsUserId', component: EditCmsUserComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
 
   //address route
-  { path: 'Addresses', component: ListAddressComponent },
-  { path: 'AddAddress', component: AddNewAddressComponent },
-  { path: 'Addresses/:addressId', component: EditAddressComponent },
+  { path: 'Addresses', component: ListAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
+  { path: 'AddAddress', component: AddNewAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] } },
+  { path: 'Addresses/:addressId', component: EditAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
   
   //content route
-  { path: 'Contents', component: ListContentsComponent },
+  { path: 'Contents', component: ListContentsComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
   //{ path: 'Contents/:contentId', component: EditContentComponent },
 
+  { path: 'Unauthorized', component: ForbiddenComponent },
   { path: '**', component: ErrorComponent },
 ];
 

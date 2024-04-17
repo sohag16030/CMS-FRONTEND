@@ -31,3 +31,8 @@
     .nav-link.active {
       background-color: #1f9bd9;
     }
+
+    .home-link {
+      cursor: pointer;
+  }
+  

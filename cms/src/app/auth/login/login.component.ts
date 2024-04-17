@@ -24,7 +24,6 @@ export class LoginComponent {
         // Decode JWT token to extract roles
         const jwtToken = this.authService.decodeJwtToken(response.access_token);
         const roles = jwtToken.roles;
-        debugger
         // Check if the user has ROLE_ADMIN or ROLE_USER role
         if (roles.includes('ROLE_ADMIN')) {
           this.router.navigate(['/AdminHomePage']);

@@ -1,0 +1,55 @@
+/* Custom CSS styles */
+
+.container {
+    margin-top: 20px;
+    text-align: center; /* Center align the content */
+}
+
+.align-items-center {
+    align-items: center; /* Align items vertically centered */
+}
+
+.col-md-6 img {
+    max-width: 100%; /* Ensure images don't overflow their parent container */
+    border-radius: 5px; /* Add some border radius for a nicer look */
+}
+
+.col-md-6 img.mb-3 {
+    margin-bottom: 20px; /* Add some extra bottom margin to the first image */
+}
+
+h1 {
+    color: #0b0b0c; /* Set the heading color */
+    font-size: 2.5rem; /* Set the heading font size */
+    margin-bottom: 30px; /* Add some bottom margin to the heading */
+}
+
+.text-highlight {
+    background-color: #3cc4c9; /* Set background color for highlighted text */
+    padding: 20px; /* Add padding for a nicer look */
+    border-radius: 5px; /* Add border radius */
+    margin-bottom: 20px; /* Add some bottom margin */
+}
+
+.text-highlight p {
+    color: #000000; /* Set text color */
+    font-size: 1.25rem; /* Set font size */
+}
+
+.text-muted {
+    color: #3f8f5e; /* Set text color for muted text */
+}
+
+.image1 {
+    margin-left: 50%;
+}
+
+.image2 {
+    margin-right: 50%;
+}
+
+.image-heading {
+    color: #fff; /* Set text color for image headings */
+    font-size: 1.5rem; /* Set font size for image headings */
+    margin-bottom: 10px; /* Add some bottom margin */
+}

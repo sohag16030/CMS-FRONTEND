@@ -27,12 +27,6 @@ export class AuthService {
         })
       );
   }
-  logout() {
-    // Clear tokens from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    this.authStatusService.setAuthenticationStatus(false);
-  }
 
   saveTokens(tokens: any) {
     localStorage.setItem('access_token', tokens.access_token);
@@ -41,5 +35,21 @@ export class AuthService {
 
   decodeJwtToken(token: string): any {
     return jwtDecode(token);
+  }
+
+  getUserRoles(tokenData: any): string[] {
+    // Extract roles from tokenData and return them
+    return tokenData.roles;
+  }
+  isAuthenticated(): boolean {
+    // Check if access token exists in local storage
+    const accessToken = localStorage.getItem('access_token');
+    return accessToken !== null;
+  }
+  logout() {
+    // Clear tokens from local storage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    this.authStatusService.setAuthenticationStatus(false);
   }
 }
