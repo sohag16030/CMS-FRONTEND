@@ -25,14 +25,14 @@ h1 {
 }
 
 .text-highlight {
-    background-color: #3cc4c9; /* Set background color for highlighted text */
+    background-color: #427598; /* Set background color for highlighted text */
     padding: 20px; /* Add padding for a nicer look */
     border-radius: 5px; /* Add border radius */
     margin-bottom: 20px; /* Add some bottom margin */
 }
 
 .text-highlight p {
-    color: #000000; /* Set text color */
+    color: #f7f7f7; /* Set text color */
     font-size: 1.25rem; /* Set font size */
 }
 
