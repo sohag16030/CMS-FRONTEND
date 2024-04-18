@@ -1,5 +1,22 @@
 /* Custom CSS styles */
 
+.sidebar {
+    width: 200px; /* Adjust sidebar width as needed */
+    height: 100vh; /* Set sidebar height to full viewport height */
+    background-color: #343a40; /* Set background color for the sidebar */
+    padding-top: 20px; /* Add some padding at the top */
+}
+
+.nav-link-img {
+    max-width: 100%; /* Set maximum width for the menu item images */
+    padding: 10px; /* Add padding to the menu items */
+    border-bottom: 1px solid #ccc; /* Add a border bottom to separate menu items */
+}
+
+.col-md-9 {
+    padding: 20px; /* Add padding to the main content area */
+}
+
 .container {
     margin-top: 20px;
     text-align: center; /* Center align the content */
