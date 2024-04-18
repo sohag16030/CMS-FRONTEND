@@ -47,7 +47,7 @@ const appRoute: Routes = [
   //{ path: 'Contents/:contentId', component: EditContentComponent },
 
   { path: 'Unauthorized', component: ForbiddenComponent },
-  { path: '**', component: ErrorComponent },
+  { path: 'Notfound', component: ErrorComponent },
 ];
 
 @NgModule({

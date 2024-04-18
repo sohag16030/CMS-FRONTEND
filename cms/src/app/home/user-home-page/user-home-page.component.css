@@ -1,7 +1,34 @@
 /* Custom CSS styles */
 
+.sidebar {
+    color: white;
+    position: fixed;
+    width: 170px;
+    height: 100vh; /* Set sidebar height to full viewport height */
+    background-color:  #077567; /* Set background color for the sidebar */
+    padding-top: 20px; /* Add some padding at the top */
+}
+.sidebar .nav-link {
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove underline */
+}
+
+.sidebar .nav-link:hover {
+    color: white; /* Change text color on hover */
+}
+
+.nav-link-img {
+    max-width: 55%; /* Set maximum width for the menu item images */
+    padding: 10px; /* Add padding to the menu items */
+}
+
+.col-md-9 {
+    margin-top: 40px;
+    margin-left: 165px;
+    padding: 20px; /* Add padding to the main content area */
+}
+
 .container {
-    margin-top: 20px;
     text-align: center; /* Center align the content */
 }
 
@@ -10,7 +37,7 @@
 }
 
 .col-md-6 img {
-    max-width: 100%; /* Ensure images don't overflow their parent container */
+    max-width: 80%; /* Ensure images don't overflow their parent container */
     border-radius: 5px; /* Add some border radius for a nicer look */
 }
 
@@ -19,37 +46,49 @@
 }
 
 h1 {
-    color: #0b0b0c; /* Set the heading color */
+    color: #012536f5; /* Set the heading color */
     font-size: 2.5rem; /* Set the heading font size */
     margin-bottom: 30px; /* Add some bottom margin to the heading */
 }
 
 .text-highlight {
-    background-color: #339882; /* Set background color for highlighted text */
+    background-color: #319e90; /* Set background color for highlighted text */
     padding: 20px; /* Add padding for a nicer look */
     border-radius: 5px; /* Add border radius */
-    margin-bottom: 20px; /* Add some bottom margin */
 }
 
 .text-highlight p {
-    color: #000000; /* Set text color */
+    color: #f7f7f7; /* Set text color */
     font-size: 1.25rem; /* Set font size */
 }
 
 .text-muted {
-    color: #3f8f5e; /* Set text color for muted text */
+    color: #f3faf3; /* Set text color for muted text */
 }
 
 .image1 {
-    margin-left: 50%;
+    margin-left: 40%;
 }
 
 .image2 {
-    margin-right: 50%;
+    margin-top: 10px;
+    margin-right: 40%;
 }
 
 .image-heading {
     color: #fff; /* Set text color for image headings */
     font-size: 1.5rem; /* Set font size for image headings */
     margin-bottom: 10px; /* Add some bottom margin */
+}
+
+.text-center{
+    margin-top: 30px;
+}
+
+.sidebar ul {
+    list-style-type: none; /* Remove bullet points from all ul elements within the sidebar */
+}
+
+.nav-item{
+    margin-left: -30px;
 }

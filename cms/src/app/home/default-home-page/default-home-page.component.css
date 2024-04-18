@@ -1,7 +1,7 @@
 /* Custom CSS styles */
 
 .container {
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center; /* Center align the content */
 }
 
@@ -25,6 +25,8 @@ h1 {
 }
 
 .text-highlight {
+    margin-left: 50px;
+    width: 91%;
     background-color: #3cc4c9; /* Set background color for highlighted text */
     padding: 20px; /* Add padding for a nicer look */
     border-radius: 5px; /* Add border radius */
@@ -41,15 +43,19 @@ h1 {
 }
 
 .image1 {
-    margin-left: 50%;
+    margin-left: 45%;
 }
 
 .image2 {
-    margin-right: 50%;
+    margin-right: 45%;
 }
 
 .image-heading {
     color: #fff; /* Set text color for image headings */
     font-size: 1.5rem; /* Set font size for image headings */
     margin-bottom: 10px; /* Add some bottom margin */
+}
+
+.text-center {
+    margin-top: 20px; /* Add margin at the top of the welcome sentence */
 }
