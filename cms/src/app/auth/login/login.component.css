@@ -1,12 +1,15 @@
 .container {
+    background-color: #89d8cb;
     border: 1px solid #35a4b7;
     border-radius: 5px;
     background-image: url('/src/assets/img/ahp1.jpg'); /* Specify the path to your image */
     background-size: cover;
     padding: 10px;
-    max-width: 400px;
-    margin: 10px auto;
-    margin-top: 10px;
+    max-width: 590px;
+    margin-left: 300px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: left;
 }
 
 .form-group {

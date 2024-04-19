@@ -59,3 +59,9 @@ h1 {
 .text-center {
     margin-top: 20px; /* Add margin at the top of the welcome sentence */
 }
+
+.login{
+    margin-right: -100px;
+    margin-left: 500px;
+    margin-top: -400px;
+}

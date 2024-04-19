@@ -25,7 +25,7 @@ const appRoute: Routes = [
   { path: 'UserHomePage', component: UserHomePageComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_USER'] } },
 
   //auth route
-  { path: 'Login', component: LoginComponent },
+  // { path: 'Login', component: LoginComponent },
 
   //cmsUser route
   { path: 'CmsUsers', component: CmsUserListComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
