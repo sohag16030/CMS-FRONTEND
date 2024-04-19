@@ -26,6 +26,7 @@ export class NavBarComponent {
   logout() {
     // Call the logout method from the AuthService
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   navigateToHome(event: MouseEvent) {
