@@ -4,7 +4,7 @@
       routerLink="/AddAddress">(+) Add New </button>
       <br><br>
     <h2>Address List</h2>
-    <div class="filter-section">
+    <div class="filter-section" *ngIf="isAdmin()">
         <div>
             <label for="searchInput">Search:</label>
             <input type="text" id="searchInput" placeholder="Enter...">
@@ -35,7 +35,7 @@
     </table>
 
     <!-- Pagination -->
-    <div class="pagination">
+    <div class="pagination" *ngIf="isAdmin()">
         <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
         <span>{{ pageNumber + 1 }}</span>
         <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>

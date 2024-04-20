@@ -1,3 +1,4 @@
+<br><br><br>
 <div class="container">
   <form [formGroup]="cmsUserForm" class="user-details-form">
     <!-- <div style="margin-top: 15px; margin-left: 448px;">
@@ -9,8 +10,6 @@
 
     <h3 style="margin-top: -12px;">Basic Information:</h3>
     <div class="basic-info-box">
-      <button [routerLink]="'/CmsUsers/' + cmsUser.cmsUserId" style="margin-left: 409px; background-color: rgb(21, 100, 105)" type="button">Edit Basic
-        Info</button>
       <div class="form-group">
         <label for="userName">User Name:</label>
         <input type="text" id="userName" formControlName="userName" readonly>
@@ -32,11 +31,15 @@
         <input type="text" id="gender" formControlName="gender" readonly>
       </div>
     </div>
+    <button [routerLink]="'/CmsUsers/' + cmsUser.cmsUserId" style="background-color: rgb(21, 100, 105)" type="button">Edit Basic
+      Info</button>
   </form>
-  <!-- <app-list-address></app-list-address> -->
-  <div>
-    <button routerLink="/Addresses" style="background-color: rgb(25, 120, 96)" type="button">View Address</button>
-    <!-- <button style="margin-left: 10px; background-color: rgb(40, 134, 120); margin-bottom: 20px;" type="button">View Academic Infos</button> -->
-  </div>
-
+  <!-- <div>
+    <button  routerLink="/Addresses" style="background-color: rgb(25, 120, 96)" type="button">View Address</button>
+    <button style="margin-left: 10px; background-color: rgb(40, 134, 120); margin-bottom: 20px;" type="button">View Academic Infos</button>
+  </div> -->
+  
+</div>
+<div class="addList">
+  <app-list-address></app-list-address>
 </div>

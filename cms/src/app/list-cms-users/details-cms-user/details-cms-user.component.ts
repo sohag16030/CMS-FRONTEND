@@ -64,4 +64,5 @@ export class DetailsCmsUserComponent implements OnInit {
       isActive: this.cmsUser.isActive,
     });
   }
+
 }

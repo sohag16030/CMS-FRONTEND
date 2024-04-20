@@ -37,6 +37,14 @@ export class AuthService {
     return jwtDecode(token);
   }
 
+  getUserDetails(token: string): { userId: string, userName: string } {
+    const jwtToken = this.decodeJwtToken(token);
+    const userId = jwtToken.userId; // Assuming 'userId' is the key in the JWT token for user ID
+    const userName = jwtToken.userName; // Assuming 'userName' is the key in the JWT token for user name
+    return { userId, userName };
+  }
+  
+
   getUserRoles(tokenData: any): string[] {
     // Extract roles from tokenData and return them
     return tokenData.roles;

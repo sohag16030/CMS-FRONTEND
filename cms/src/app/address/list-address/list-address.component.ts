@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddressService } from '../../services/address.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-list-address',
@@ -10,11 +11,14 @@ export class ListAddressComponent implements OnInit {
   addressList: any[] = [];
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 5;
   sortField: string = 'addressId';
   sortOrder: string = 'ASC';
+  userRoles:string;
+  userId: string;
+  userName: string;
 
-  constructor(private addressService: AddressService) { }
+  constructor(private addressService: AddressService,private authService: AuthService) { }
 
   ngOnInit() {
     this.getAddressList();
@@ -64,5 +68,13 @@ export class ListAddressComponent implements OnInit {
         console.error('Error occurred while deleting address:', error);
       }
     );
+  }
+  getUserRoles(tokenData: any) {
+    debugger
+    const userRoles = this.authService.getUserRoles;
+  }
+  isAdmin(): boolean {
+    debugger
+    return this.userRoles && this.userRoles.includes('ROLE_ADMIN');
   }
 }

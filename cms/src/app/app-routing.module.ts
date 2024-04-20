@@ -38,7 +38,7 @@ const appRoute: Routes = [
   { path: 'CmsUsers/:cmsUserId', component: EditCmsUserComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
 
   //address route
-  { path: 'Addresses', component: ListAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
+  { path: 'Addresses', component: ListAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
   { path: 'AddAddress', component: AddNewAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] } },
   { path: 'Addresses/:addressId', component: EditAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
   

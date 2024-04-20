@@ -17,7 +17,7 @@
                     <a routerLink="Login" class="nav-link">LOGIN</a>
                 </li> -->
                 <li *ngIf="!isAuthenticated" style="float:right">
-                    <a routerLink="AddCmsUser" class="nav-link">REGISTER</a>
+                    <a routerLink="AddCmsUser" class="nav-link">SIGN UP</a>
                 </li>
                 <li *ngIf="isAuthenticated" style="float:right">
                     <a (click)="logout()" routerLink="Login" class="nav-link">LOGOUT</a>
