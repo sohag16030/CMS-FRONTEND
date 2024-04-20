@@ -2,6 +2,15 @@
 <div class="container">
     <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
         <h1 style="margin-left: 150px;">Create New Address</h1>
+        <div class="form-group"  *ngIf="isAdmin()">
+            <label for="cmsUserId">User Id</label>
+            <input type="text" id="cmsUserId" name="cmsUserId" formControlName="cmsUserId" />
+            <div style="color: red; margin-top: -10px;">
+                <small *ngIf="addressForm.get('cmsUserId').errors?.['required']">
+                    User Id is a required field
+                </small>
+            </div>
+        </div>
         <div class="form-group">
             <label for="addressType">Address Type:</label>
             <select id="addressType" name="addressType" formControlName="addressType">
@@ -50,18 +59,6 @@
                     Upazila is a required field
                 </small>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="cmsUserId">User Id:</label>
-            <select id="cmsUserId" name="cmsUserId" formControlName="cmsUserId">
-                <option *ngFor="let id of cmsUserIds" [value]="id">{{ id }}</option>
-            </select>
-        </div>
-        <div style="color: red; margin-top: -10px;">
-            <small *ngIf="addressForm.get('cmsUserId').errors?.['required']">
-                User Id is a required field
-            </small>
         </div>
         <button type="submit">Submit</button>  
     </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, booleanAttribute } from '@angular/core';
 import { AddressService } from '../../services/address.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -14,14 +14,15 @@ export class ListAddressComponent implements OnInit {
   pageSize: number = 5;
   sortField: string = 'addressId';
   sortOrder: string = 'ASC';
-  userRoles:string;
+  userRoles: string;
   userId: string;
   userName: string;
 
-  constructor(private addressService: AddressService,private authService: AuthService) { }
+  constructor(private addressService: AddressService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getAddressList();
+    this.isAdmin();
   }
 
   getAddressList() {
@@ -69,10 +70,12 @@ export class ListAddressComponent implements OnInit {
       }
     );
   }
-  getUserRoles(tokenData: any) {
-    const userRoles = this.authService.getUserRoles;
-  }
-  isAdmin(): boolean {
-    return this.userRoles && this.userRoles.includes('ROLE_ADMIN');
+  isAdmin() {
+    const token = localStorage.getItem('access_token');
+    const jwtToken = this.authService.decodeJwtToken(token);
+    const userRole = this.authService.getUserRoles(jwtToken);
+    if (userRole.includes('ROLE_ADMIN')) {
+      return true;
+    } else return false;
   }
 }
