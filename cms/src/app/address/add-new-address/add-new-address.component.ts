@@ -28,7 +28,7 @@ export class AddNewAddressComponent implements OnInit {
       divisionId: ['', Validators.required],
       districtId: ['', Validators.required],
       upazilaId: ['', Validators.required],
-      cmsUserId: ['', Validators.required],
+      cmsUserId: [null, this.isAdmin() ? Validators.required : null],
       isActive: [true, Validators.required]
     });
     this.isAdmin();
@@ -44,7 +44,7 @@ export class AddNewAddressComponent implements OnInit {
   }
   onSubmit(): void {
     debugger
-   // if (this.addressForm.valid) {
+    if (this.addressForm.valid) {
       const formData = this.addressForm.value;
       // Construct Address model object
       const address: Address = {
@@ -63,7 +63,7 @@ export class AddNewAddressComponent implements OnInit {
           name: null // Set name field to null
         },
         cmsUser: {
-          cmsUserId: null,
+          cmsUserId: formData.cmsUserId,
           userName: null,
           mobileNumber: null,
           email: null,
@@ -79,35 +79,20 @@ export class AddNewAddressComponent implements OnInit {
       if (!this.isAdmin()) {
         debugger
         address.cmsUser.cmsUserId = parseInt(this.userId, 10);
-        this.addressService.addAddress(address).subscribe(
-          response => {
-            console.log('Address added successfully:', response);
-            // Optionally, you can reset the form after successful submission
-            this.addressForm.reset();
-            this.router.navigate(['/Addresses']);
-          },
-          error => {
-            debugger
-            console.error('Error adding address:', error);
-          }
-        );
-      } else {
-        // Admin case
-        address.cmsUser.cmsUserId = formData.cmsUserId;
-        this.addressService.addAddress(address).subscribe(
-          response => {
-            console.log('Address added successfully:', response);
-            // Optionally, you can reset the form after successful submission
-            this.addressForm.reset();
-            this.router.navigate(['/Addresses']);
-          },
-          error => {
-            debugger
-            console.error('Error adding address:', error);
-          }
-        );
       }
-    //}
+        this.addressService.addAddress(address).subscribe(
+          response => {
+            console.log('Address added successfully:', response);
+            // Optionally, you can reset the form after successful submission
+            this.addressForm.reset();
+            this.router.navigate(['/Addresses']);
+          },
+          error => {
+            debugger
+            console.error('Error adding address:', error);
+          }
+        );
+    }
   }  
   isAdmin() {
     const token = localStorage.getItem('access_token');
