@@ -64,16 +64,15 @@ export class EditCmsUserComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     if (this.cmsUserForm.valid) {
       const formData = this.cmsUserForm.value;
-      console.log("I am here now");
-      console.log(formData);
 
       this.cmsUserService.updateCmsUser(this.cmsUserId,formData).subscribe(
         (response) => {
           console.log('Successfully saved:', response);
           this.cmsUserForm.reset();
-          this.router.navigate(['/']);
+          this.router.navigate([`/CmsUsers/CmsUser/${this.cmsUserId}`]);
         },
         (error) => {
           console.error('Error occurred while saving:', error);

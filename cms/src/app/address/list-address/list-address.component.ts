@@ -70,11 +70,9 @@ export class ListAddressComponent implements OnInit {
     );
   }
   getUserRoles(tokenData: any) {
-    debugger
     const userRoles = this.authService.getUserRoles;
   }
   isAdmin(): boolean {
-    debugger
     return this.userRoles && this.userRoles.includes('ROLE_ADMIN');
   }
 }
