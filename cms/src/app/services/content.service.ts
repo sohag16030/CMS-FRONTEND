@@ -12,7 +12,6 @@ export class ContentService {
     constructor(private httpClient: HttpClient) { }
 
     public uploadfile(file: File, userId: number): Observable<any> {
-        debugger
         const formParams = new FormData();
         formParams.append('contents', file);
         return this.httpClient.post(`${BASIC_URL}/contents/${userId}`, formParams);
@@ -35,6 +34,9 @@ export class ContentService {
     }
 
     updateContent(contentId: number, newData: any): Observable<any> {
-        return this.httpClient.put(`${BASIC_URL}/contents/${contentId}`, newData);
-    }
+        const formParams = new FormData();
+        formParams.append('contents', newData); // Assuming newData is a file
+        return this.httpClient.put(`${BASIC_URL}/contents/${contentId}`, formParams);
+      }
+      
 }

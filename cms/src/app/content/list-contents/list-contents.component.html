@@ -37,7 +37,7 @@
                 <td>{{ content.title }}</td>
                 <td>{{ content.type }}</td>
                 <td>
-                    <button class="edit" (click)="openEditModal(content.contentId, content.contentData)" matTooltip="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="edit" (click)="openModal(content.contentId)" matTooltip="Edit"><i class="fas fa-edit"></i></button>
                     <button class="view" (click)="downloadContent(content)" matTooltip="Download"><i class="fas fa-download"></i></button>
                     <button class="delete" (click)="deleteContent(content.contentId)"matTooltip="Delete"><i
                         class="fas fa-trash-alt"></i></button>

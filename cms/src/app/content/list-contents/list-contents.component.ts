@@ -120,7 +120,6 @@ export class ListContentsComponent {
   }
 
   downloadContent(content: any) {
-    debugger
     this.contentService.downloadContent(content.contentId).subscribe(
       (response: any) => {
         const headers = response.headers;
@@ -189,28 +188,14 @@ export class ListContentsComponent {
     }
   }
 
-  
-  openEditModal(contentId: number, contentData: any): void {
+
+  openModal(contentId: number): void {
+    debugger
+    console.log(contentId);
     const dialogRef = this.dialog.open(EditContentComponent, {
       width: '600px',
-      data: { contentId: contentId, contentData: contentData }
+      data: { contentId: contentId }
     });
-    debugger
-    dialogRef.afterClosed().subscribe(result => {
-      debugger
-      if (result) {
-        this.contentService.updateContent(contentId, result).subscribe(
-          (response) => {
-            console.log('Content updated successfully:', response);
-            // You can handle any response here if needed
-          },
-          (error) => {
-            console.error('Error occurred while updating content:', error);
-            // You can handle the error here if needed
-          }
-        );
-      }
-    });
+    
   }
-
 }
