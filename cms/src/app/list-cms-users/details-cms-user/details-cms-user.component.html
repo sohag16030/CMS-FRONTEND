@@ -1,10 +1,9 @@
 <br><br><br>
 <div class="container">
   <form [formGroup]="cmsUserForm" class="user-details-form">
-    <h2 style="margin-top: -12px;"><b>Basic Information:</b></h2>
-    <button [routerLink]="'/CmsUsers/' + cmsUser.cmsUserId"
-      style="margin-left: 880px;margin-top: -90px;margin-bottom: 10px; background-color: rgb(21, 100, 105)" type="button">Edit Basic
-      Info</button>
+    <h3 style="margin-top: -12px;"><b>Basic Information:</b></h3>
+      <button style="margin-left: 950px;margin-top: -90px;margin-bottom: 10px; background-color: rgb(50, 124, 42)" class="details" [routerLink]="'/CmsUsers/' + cmsUser.cmsUserId" matTooltip="Edit"><i
+        class="fas fa-edit"></i></button>
     <div class="basic-info-box">
       <div class="form-group">
         <label for="userName">User Name:</label>

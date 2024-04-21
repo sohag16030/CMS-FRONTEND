@@ -1,10 +1,9 @@
 <br><br><br>
 <div class="container">
-    <button style=" margin-left: -1px;  background-color: rgb(87, 168, 117); color: white; font-size: 15px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" type="button"
-      routerLink="/AddAddress">(+) Add New </button>
-      <br><br>
+        <button style=" margin-left: -1px;" class="add-new-item" routerLink="/AddAddress" matTooltip="Add New Item"><i class="fas fa-plus-circle"></i> Add New Item</button>
+    <br><br>
     <h2>Address List</h2>
-    <div class="filter-section"  *ngIf="!removeFlag">
+    <div class="filter-section" *ngIf="!removeFlag">
         <div>
             <label for="searchInput">Search:</label>
             <input type="text" id="searchInput" placeholder="Enter...">
@@ -27,17 +26,21 @@
                 <td>{{ address.district.name }}</td>
                 <td>{{ address.upazila.name }}</td>
                 <td>
-                    <button class="edit" [routerLink]="'/Addresses/' + address.addressId">Edit</button>
-                    <button class="delete" (click)="deleteAddress(address.addressId)">Delete</button>
+                    <button class="edit" [routerLink]="'/Addresses/' + address.addressId" matTooltip="Edit"><i
+                            class="fas fa-edit"></i></button>
+
+                    <button class="delete" (click)="deleteAddress(address.addressId)" matTooltip="Delete"><i
+                            class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <!-- Pagination -->
-    <div class="pagination"  *ngIf="!removeFlag">
+    <div class="pagination" *ngIf="!removeFlag">
         <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
-        <span>{{ pageNumber + 1 }}</span>
+        <div *ngFor="let page of getPageArray()">
+            <button class="pagination" (click)="goToPage(page)" [disabled]="page === pageNumber">{{ page + 1 }}</button>
+        </div>
         <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
     </div>
 </div>

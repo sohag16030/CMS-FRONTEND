@@ -11,7 +11,7 @@ export class ListAddressComponent implements OnInit {
   addressList: any[] = [];
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 5;
+  pageSize: number = 2;
   sortField: string = 'addressId';
   sortOrder: string = 'ASC';
   userRoles: string;
@@ -24,6 +24,10 @@ export class ListAddressComponent implements OnInit {
   ngOnInit() {
     this.getAddressList();
     this.checkForRemoveFlagOnce();
+  }
+  applyFilter() {
+    this.pageNumber = 0;
+    this.getAddressList();
   }
 
   getAddressList() {
@@ -45,6 +49,16 @@ export class ListAddressComponent implements OnInit {
     );
   }
 
+  sortData(field: string) {
+    if (this.sortField === field) {
+      this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
+    } else {
+      this.sortField = field;
+      this.sortOrder = 'ASC';
+    }
+    this.getAddressList();
+  }
+
   getNextPage() {
     if (this.pageNumber < this.numberOfPages - 1) {
       this.pageNumber++;
@@ -57,6 +71,23 @@ export class ListAddressComponent implements OnInit {
       this.pageNumber--;
       this.getAddressList();
     }
+  }
+
+  // Modify the method to generate an array of page numbers
+  getPageArray(): number[] {
+    return Array.from({ length: this.numberOfPages }, (_, i) => i);
+  }
+
+  // Add a method to navigate to a specific page
+  goToPage(page: number) {
+    this.pageNumber = page;
+    this.getAddressList();
+  }
+
+  checkForRemoveFlag() {
+    debugger
+    // Check if removeFlag is enabled from another component
+    localStorage.setItem('detailsButtonClicked', 'true');
   }
 
   deleteAddress(addressId: number) {
@@ -72,7 +103,6 @@ export class ListAddressComponent implements OnInit {
     );
   }
   isUser() {
-    debugger
     const token = localStorage.getItem('access_token');
     const jwtToken = this.authService.decodeJwtToken(token);
     const userRole = this.authService.getUserRoles(jwtToken);
@@ -86,14 +116,14 @@ export class ListAddressComponent implements OnInit {
     // Check if removeFlag is enabled from another component
     const detailsButtonClicked = localStorage.getItem('detailsButtonClicked');
     debugger
-    if(this.isUser()){
+    if (this.isUser()) {
       localStorage.setItem('detailsButtonClicked', 'false');
       this.removeFlag = true;
     }
-    else if(detailsButtonClicked && detailsButtonClicked === 'true'){
+    else if (detailsButtonClicked && detailsButtonClicked === 'true') {
       localStorage.setItem('detailsButtonClicked', 'false');
       this.removeFlag = true;
     }
-    console.log("detailsButtonClicked button pressed  ::"+ this.removeFlag);
+    console.log("detailsButtonClicked button pressed  ::" + this.removeFlag);
   }
 }

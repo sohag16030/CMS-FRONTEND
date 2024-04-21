@@ -2,3 +2,22 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.add-new-item {
+    background-color: rgb(36, 115, 112);
+    color: white;
+    font-size: 15px;
+    font-family:'Courier New', Courier, monospace;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-new-item:hover {
+    background-color: #5cb85c; /* Change color on hover if desired */
+}
+
+.add-new-item i {
+    margin-right: 5px; /* Adjust icon spacing if needed */
+}

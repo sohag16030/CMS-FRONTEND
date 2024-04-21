@@ -4,7 +4,7 @@
     background-color: rgb(189, 215, 213);
     padding: 10px;
     max-width: 400px;
-    margin-left: 90px;
+    margin-left: 80px;
     margin-top: 10px;
 }
 
@@ -112,12 +112,12 @@ button {
 }
 
 button.view {
-    background-color: #28a745;
+    background-color: #287fa7;
     color: #fff;
 }
 
 button.edit {
-    background-color: #007bff;
+    background-color: #28a745;
     color: #fff;
 }
 
@@ -144,4 +144,34 @@ button:active {
 
 button.download{
     background-color: #4330ac;
+}
+
+
+/* Add or modify styles for pagination buttons as needed */
+.pagination {
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pagination button {
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    opacity: 0.8;
+}
+
+.pagination button:disabled {
+    background-color: #a39898;
+    cursor: not-allowed;
 }

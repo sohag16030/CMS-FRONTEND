@@ -1,5 +1,6 @@
-<button (click)="toggleUploadForm()" style="margin-left: 90px; background-color: rgb(87, 168, 117); color: white;">
-    {{ showUploadForm ? 'Hide Upload Form' : 'Show Upload Form' }}
+<br><br><br>
+<button *ngIf="isUser()"  (click)="toggleUploadForm()" style="margin-left: 80px; background-color: rgb(55, 59, 190); color: white;">
+    <i class="fas fa-upload"></i> {{ showUploadForm ? 'Hide Upload Form' : 'Show Upload Form' }}
 </button>
 
 <div *ngIf="showUploadForm" class="form">
@@ -38,18 +39,22 @@
                 <td>{{ content.title }}</td>
                 <td>{{ content.type }}</td>
                 <td>
-                    <button>Edit</button>
-                    <button class="view" (click)="downloadContent(content)">Download</button>
-                    <button class="delete" (click)="deleteContent(content.contentId)">Delete</button>
+                    <button class="edit"  matTooltip="Edit"><i
+                        class="fas fa-edit"></i></button>
+                    <button class="view" (click)="downloadContent(content)" matTooltip="Download"><i class="fas fa-download"></i></button>
+                    <button class="delete" (click)="deleteContent(content.contentId)"matTooltip="Delete"><i
+                        class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <!-- Pagination -->
     <div class="pagination">
         <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
-        <span>{{ pageNumber + 1 }}</span>
+        <div *ngFor="let page of getPageArray()">
+            <button class="pagination" (click)="goToPage(page)" [disabled]="page === pageNumber">{{ page + 1 }}</button>
+        </div>
         <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
     </div>
+
 </div>

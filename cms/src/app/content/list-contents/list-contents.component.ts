@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ContentService } from '../../services/content.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-list-contents',
@@ -21,10 +22,11 @@ export class ListContentsComponent {
   sortField: string = 'contentId';
   sortOrder: string = 'ASC';
 
-  constructor(private contentService: ContentService, private router: Router) { }
+  constructor(private contentService: ContentService, private router: Router,private authService: AuthService) { }
 
   ngOnInit() {
     this.getContentList();
+    this.isUser();
   }
 
   applyFilter() {
@@ -75,6 +77,16 @@ export class ListContentsComponent {
     }
   }
 
+  // Modify the method to generate an array of page numbers
+  getPageArray(): number[] {
+    return Array.from({ length: this.numberOfPages }, (_, i) => i);
+  }
+
+  // Add a method to navigate to a specific page
+  goToPage(page: number) {
+    this.pageNumber = page;
+    this.getContentList();
+  }
 
   onFilechange(event: any) {
     console.log(event.target.files[0]);
@@ -153,6 +165,15 @@ export class ListContentsComponent {
         }
       );
     }
+  }
+  isUser() {
+    debugger
+    const token = localStorage.getItem('access_token');
+    const jwtToken = this.authService.decodeJwtToken(token);
+    const userRole = this.authService.getUserRoles(jwtToken);
+    if (userRole.includes('ROLE_USER')) {
+      return true;
+    } else return false;
   }
 
 }

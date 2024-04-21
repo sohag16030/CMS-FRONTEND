@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CmsUser, Address, District, Division, Upazila, AcademicInfo, Subject } from '../../model/cmsuser.model';
+import { CmsUser} from '../../model/cmsuser.model';
 import { CmsUserService } from '../../services/cmsuser.service';
+
 
 @Component({
   selector: 'app-details-cms-user',

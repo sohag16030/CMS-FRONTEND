@@ -74,21 +74,6 @@ export class CmsUserListComponent implements OnInit {
     }
   }
 
-  deleteCmsUser(cmsUserId: number) {
-    console.log(cmsUserId);
-    if (confirm('Are you sure you want to delete this user?')) {
-      this.cmsUserService.deleteCmsUser(cmsUserId).subscribe(
-        () => {
-          console.log('Record deleted successfully.');
-          this.getCmsUserList(); // Refresh CMS user list after deletion
-        },
-        (error) => {
-          console.error('Error occurred while deleting CMS user:', error);
-        }
-      );
-    }
-  }
-
   // Modify the method to generate an array of page numbers
   getPageArray(): number[] {
     return Array.from({ length: this.numberOfPages }, (_, i) => i);
@@ -104,5 +89,20 @@ export class CmsUserListComponent implements OnInit {
     debugger
     // Check if removeFlag is enabled from another component
     localStorage.setItem('detailsButtonClicked', 'true');
+  }
+
+  deleteCmsUser(cmsUserId: number) {
+    console.log(cmsUserId);
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.cmsUserService.deleteCmsUser(cmsUserId).subscribe(
+        () => {
+          console.log('Record deleted successfully.');
+          this.getCmsUserList(); // Refresh CMS user list after deletion
+        },
+        (error) => {
+          console.error('Error occurred while deleting CMS user:', error);
+        }
+      );
+    }
   }
 }
