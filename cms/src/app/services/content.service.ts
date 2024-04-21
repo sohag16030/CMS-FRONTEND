@@ -12,6 +12,7 @@ export class ContentService {
     constructor(private httpClient: HttpClient) { }
 
     public uploadfile(file: File, userId: number): Observable<any> {
+        debugger
         const formParams = new FormData();
         formParams.append('contents', file);
         return this.httpClient.post(`${BASIC_URL}/contents/${userId}`, formParams);

@@ -21,6 +21,7 @@ export class ListContentsComponent {
   pageSize: number = 3;
   sortField: string = 'contentId';
   sortOrder: string = 'ASC';
+  userName:string;
 
   constructor(private contentService: ContentService, private router: Router,private authService: AuthService) { }
 
@@ -117,6 +118,7 @@ export class ListContentsComponent {
   }
 
   downloadContent(content: any) {
+    debugger
     this.contentService.downloadContent(content.contentId).subscribe(
         (response: any) => {
             const headers = response.headers;
@@ -167,13 +169,22 @@ export class ListContentsComponent {
     }
   }
   isUser() {
-    debugger
     const token = localStorage.getItem('access_token');
     const jwtToken = this.authService.decodeJwtToken(token);
     const userRole = this.authService.getUserRoles(jwtToken);
+    this.getUserDetails();
     if (userRole.includes('ROLE_USER')) {
       return true;
     } else return false;
+  }
+
+  getUserDetails() {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const userDetails = this.authService.getUserDetails(token);
+      this.userId = parseInt(userDetails.userId,10);
+      this.userName = userDetails.userName;
+    }
   }
 
 }
