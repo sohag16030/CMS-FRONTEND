@@ -17,12 +17,13 @@ export class ListAddressComponent implements OnInit {
   userRoles: string;
   userId: string;
   userName: string;
+  removeFlag: boolean = false;
 
   constructor(private addressService: AddressService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getAddressList();
-    this.isAdmin();
+    this.checkForRemoveFlagOnce();
   }
 
   getAddressList() {
@@ -70,12 +71,29 @@ export class ListAddressComponent implements OnInit {
       }
     );
   }
-  isAdmin() {
+  isUser() {
+    debugger
     const token = localStorage.getItem('access_token');
     const jwtToken = this.authService.decodeJwtToken(token);
     const userRole = this.authService.getUserRoles(jwtToken);
-    if (userRole.includes('ROLE_ADMIN')) {
+    if (userRole.includes('ROLE_USER')) {
       return true;
     } else return false;
+  }
+
+  checkForRemoveFlagOnce() {
+    debugger
+    // Check if removeFlag is enabled from another component
+    const detailsButtonClicked = localStorage.getItem('detailsButtonClicked');
+    debugger
+    if(this.isUser()){
+      localStorage.setItem('detailsButtonClicked', 'false');
+      this.removeFlag = true;
+    }
+    else if(detailsButtonClicked && detailsButtonClicked === 'true'){
+      localStorage.setItem('detailsButtonClicked', 'false');
+      this.removeFlag = true;
+    }
+    console.log("detailsButtonClicked button pressed  ::"+ this.removeFlag);
   }
 }

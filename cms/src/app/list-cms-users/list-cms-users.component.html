@@ -40,7 +40,7 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.gender }}</td>
                 <td>
-                    <button class="details" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId" matTooltip="Details"><i
+                    <button class="details" (click)="checkForRemoveFlag()" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId" matTooltip="Details"><i
                             class="fas fa-info-circle"></i></button>
                     <button class="delete" (click)="deleteCmsUser(user.cmsUserId)" matTooltip="Delete"><i
                             class="fas fa-trash-alt"></i></button>

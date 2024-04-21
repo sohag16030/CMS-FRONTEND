@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CmsUserService } from '../services/cmsuser.service';
+import { AddressService } from '../services/address.service';
 
 @Component({
   selector: 'app-cms-user-list',
@@ -16,8 +17,9 @@ export class CmsUserListComponent implements OnInit {
   pageSize: number = 10;
   sortField: string = 'cmsUserId';
   sortOrder: string = 'ASC';
+  removeFlag: boolean = false;
 
-  constructor(private cmsUserService: CmsUserService) { }
+  constructor(private cmsUserService: CmsUserService,private addressService: AddressService) { }
 
   ngOnInit() {
     this.getCmsUserList();
@@ -98,4 +100,9 @@ export class CmsUserListComponent implements OnInit {
     this.getCmsUserList();
   }
 
+  checkForRemoveFlag() {
+    debugger
+    // Check if removeFlag is enabled from another component
+    localStorage.setItem('detailsButtonClicked', 'true');
+  }
 }
