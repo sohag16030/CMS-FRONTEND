@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class EditContentComponent {
   file: File = null;
-  userId: number;
+  userId: number = 27;
   showUploadForm: boolean = false;
 
   contentList: any[] = [];
@@ -40,7 +40,7 @@ export class EditContentComponent {
         console.log(this.contentList);
       },
       (error) => {
-        console.error('Error occurred while fetching CMS user list:', error);
+        console.error('Error occurred while fetching content list:', error);
       }
     );
   }
@@ -50,23 +50,19 @@ export class EditContentComponent {
     this.file = event.target.files[0];
   }
 
-  upload() {
-    if (this.file && this.userId) {
-      this.contentService.uploadfile(this.file, this.userId).subscribe(resp => {
-        // Update the content list
-        this.getContentList();
+  // upload() {
+  //   this.contentService.updateContent(contentId, result).subscribe(
+  //     (response) => {
+  //       console.log('Content updated successfully:', response);
+  //       // You can handle any response here if needed
+  //     },
+  //     (error) => {
+  //       console.error('Error occurred while updating content:', error);
+  //       // You can handle the error here if needed
+  //     }
+  //   );
+  // }
 
-        // Reset form fields
-        this.file = null;
-        this.userId = null;
-        this.showUploadForm = false; // Close the upload form if it's open
-      });
-    } else if (!this.file) {
-      alert("Please select a file first");
-    } else {
-      alert("Please enter a user ID");
-    }
-  }
   private saveFile(blob: Blob, filename: string): void {
     console.log("filename:"+filename);
     const url = window.URL.createObjectURL(blob);
@@ -79,15 +75,4 @@ export class EditContentComponent {
     window.URL.revokeObjectURL(url);
   }
 
-  openEditModal(content: any): void {
-    const dialogRef = this.dialog.open(EditContentComponent, {
-      width: '600px',
-      data: { contentId: content.contentId, contentData: content }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // You can handle any result here if needed
-    });
-  }
 }

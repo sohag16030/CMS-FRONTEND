@@ -23,9 +23,9 @@ export class ListContentsComponent {
   pageSize: number = 3;
   sortField: string = 'contentId';
   sortOrder: string = 'ASC';
-  userName:string;
+  userName: string;
 
-  constructor(private contentService: ContentService, private router: Router,private authService: AuthService,public dialog: MatDialog) { }
+  constructor(private contentService: ContentService, private router: Router, private authService: AuthService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getContentList();
@@ -122,31 +122,31 @@ export class ListContentsComponent {
   downloadContent(content: any) {
     debugger
     this.contentService.downloadContent(content.contentId).subscribe(
-        (response: any) => {
-            const headers = response.headers;
-            const contentDisposition = headers.get('Content-Disposition');
-            // Extract filename from Content-Disposition header
-            let filename = '';
-            if (contentDisposition) {
-                const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                const matches = filenameRegex.exec(contentDisposition);
-                if (matches && matches.length > 1) {
-                    filename = matches[1].replace(/['"]/g, '');
-                    
-                }
-            }
-            // Save file with the extracted filename
-            this.saveFile(response.body, filename);
-        },
-        (error) => {
-            console.error('Error occurred while downloading content:', error);
+      (response: any) => {
+        const headers = response.headers;
+        const contentDisposition = headers.get('Content-Disposition');
+        // Extract filename from Content-Disposition header
+        let filename = '';
+        if (contentDisposition) {
+          const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          const matches = filenameRegex.exec(contentDisposition);
+          if (matches && matches.length > 1) {
+            filename = matches[1].replace(/['"]/g, '');
+
+          }
         }
+        // Save file with the extracted filename
+        this.saveFile(response.body, filename);
+      },
+      (error) => {
+        console.error('Error occurred while downloading content:', error);
+      }
     );
-}
+  }
 
 
   private saveFile(blob: Blob, filename: string): void {
-    console.log("filename:"+filename);
+    console.log("filename:" + filename);
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -184,19 +184,32 @@ export class ListContentsComponent {
     const token = localStorage.getItem('access_token');
     if (token) {
       const userDetails = this.authService.getUserDetails(token);
-      this.userId = parseInt(userDetails.userId,10);
+      this.userId = parseInt(userDetails.userId, 10);
       this.userName = userDetails.userName;
     }
   }
-  openEditModal(content: any): void {
+
+  
+  openEditModal(contentId: number, contentData: any): void {
     const dialogRef = this.dialog.open(EditContentComponent, {
       width: '600px',
-      data: { contentId: content.contentId, contentData: content }
+      data: { contentId: contentId, contentData: contentData }
     });
-
+    debugger
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // You can handle any result here if needed
+      debugger
+      if (result) {
+        this.contentService.updateContent(contentId, result).subscribe(
+          (response) => {
+            console.log('Content updated successfully:', response);
+            // You can handle any response here if needed
+          },
+          (error) => {
+            console.error('Error occurred while updating content:', error);
+            // You can handle the error here if needed
+          }
+        );
+      }
     });
   }
 
