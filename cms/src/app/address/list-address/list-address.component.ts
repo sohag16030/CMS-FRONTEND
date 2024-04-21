@@ -24,6 +24,7 @@ export class ListAddressComponent implements OnInit {
   ngOnInit() {
     this.getAddressList();
     this.checkForRemoveFlagOnce();
+    this.isAdmin();
   }
   applyFilter() {
     this.pageNumber = 0;
@@ -125,5 +126,14 @@ export class ListAddressComponent implements OnInit {
       this.removeFlag = true;
     }
     console.log("detailsButtonClicked button pressed  ::" + this.removeFlag);
+  }
+
+  isAdmin() {
+    const token = localStorage.getItem('access_token');
+    const jwtToken = this.authService.decodeJwtToken(token);
+    const userRole = this.authService.getUserRoles(jwtToken);
+    if (userRole.includes('ROLE_ADMIN')) {
+      return true;
+    } else return false;
   }
 }

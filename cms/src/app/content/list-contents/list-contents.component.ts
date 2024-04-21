@@ -186,5 +186,4 @@ export class ListContentsComponent {
       this.userName = userDetails.userName;
     }
   }
-
 }

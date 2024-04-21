@@ -29,6 +29,7 @@
     <table class="content-table">
         <thead>
             <tr>
+                <th *ngIf="!isUser()">Author</th>
                 <th>Title</th>
                 <th>Type</th>
                 <th>Actions</th>
@@ -36,6 +37,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let content of contentList">
+                <td *ngIf="!isUser()">{{null}}</td>
                 <td>{{ content.title }}</td>
                 <td>{{ content.type }}</td>
                 <td>
