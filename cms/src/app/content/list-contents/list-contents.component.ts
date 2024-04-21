@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ContentService } from '../../services/content.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { EditContentComponent } from '../edit-content/edit-content.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-contents',
@@ -23,7 +25,7 @@ export class ListContentsComponent {
   sortOrder: string = 'ASC';
   userName:string;
 
-  constructor(private contentService: ContentService, private router: Router,private authService: AuthService) { }
+  constructor(private contentService: ContentService, private router: Router,private authService: AuthService,public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getContentList();
@@ -186,4 +188,16 @@ export class ListContentsComponent {
       this.userName = userDetails.userName;
     }
   }
+  openEditModal(content: any): void {
+    const dialogRef = this.dialog.open(EditContentComponent, {
+      width: '600px',
+      data: { contentId: content.contentId, contentData: content }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // You can handle any result here if needed
+    });
+  }
+
 }

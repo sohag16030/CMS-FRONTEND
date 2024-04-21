@@ -1,0 +1,10 @@
+<div  class="form">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="mb-3 d-flex align-items-start"> <!-- Added d-flex and align-items-start -->
+                <input (change)="onFilechange($event)" class="form-control me-3" type="file" id="formFile"> <!-- Added me-3 class for margin -->
+                <button (click)="upload()" type="button" class="btn btn-primary">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>

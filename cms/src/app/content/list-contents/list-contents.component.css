@@ -1,5 +1,5 @@
 .form {
-    border: 1px solid #35a4b7;
+    border: 1px solid #0c7385;
     border-radius: 5px;
     background-color: rgb(189, 215, 213);
     padding: 10px;
@@ -8,28 +8,17 @@
     margin-top: 10px;
 }
 
-
 input {
-    width: 100%;
+    width: calc(100% - 80px); /* Adjust the width to leave space for the button */
     padding: 8px;
     margin-top: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #78c1c1;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-input[type="checkbox"] {
-    margin-top: 5px;
-}
-
-.userId{
-    margin-left: 10px;
-}
-
 button {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    background-color: #007bff;
+    background-color: #155298;
     color: white;
     padding: 10px 20px;
     border: none;

@@ -21,6 +21,7 @@ import { DefaultHomePageComponent } from './home/default-home-page/default-home-
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TokenInterceptorService } from './services/token.interceptor.service';
 import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
+import { EditContentComponent } from './content/edit-content/edit-content.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
     DefaultHomePageComponent,
     NavBarComponent,
     ForbiddenComponent,
+    EditContentComponent,
   ],
   imports: [
     BrowserModule,
