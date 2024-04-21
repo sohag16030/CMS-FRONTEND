@@ -15,7 +15,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .add-new-item:hover {
-    background-color: #5cb85c; /* Change color on hover if desired */
+    background-color: #08446e; /* Change color on hover if desired */
 }
 
 .add-new-item i {
