@@ -12,7 +12,7 @@
     <table class="address-table">
         <thead>
             <tr>
-                <th *ngIf="isAdmin()">User Name</th>
+                <th *ngIf="!isUser()">User Name</th>
                 <th>Address Type</th>
                 <th>Division</th>
                 <th>District</th>
@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let address of addressList">
-                <td *ngIf="isAdmin()">{{null}}</td>
+                <td *ngIf="!isUser()">{{null}}</td>
                 <td>{{ address.addressType }}</td>
                 <td>{{ address.division.name }}</td>
                 <td>{{ address.district.name }}</td>
