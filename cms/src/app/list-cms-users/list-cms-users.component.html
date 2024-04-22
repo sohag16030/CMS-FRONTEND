@@ -6,18 +6,18 @@
     <h2>CMS User List</h2>
     <!-- Filter section -->
     <div class="filter-section">
-        <div>
+        <!-- <div>
             <label for="genderSelect">Gender:</label>
             <select id="genderSelect" [(ngModel)]="filterGender" (change)="applyFilter()">
                 <option value="">Select Gender</option>
                 <option value="MALE">MALE</option>
                 <option value="FEMALE">FEMALE</option>
             </select>
-        </div>
-        <div>
-            <label for="searchInput">Search:</label>
-            <input type="text" id="searchInput" [(ngModel)]="filterEmail" (ngModelChange)="applyFilter()"
-                placeholder="Enter email...">
+        </div> -->
+        <div style="margin-left: 85.5%;">
+            <!-- <label for="searchInput">Search:</label> -->
+            <input style="width: 180px;" type="text" id="searchInput" [(ngModel)]="filterEmail" (ngModelChange)="applyFilter()"
+                placeholder="search email,name,mobile no...">
         </div>
     </div>
 
