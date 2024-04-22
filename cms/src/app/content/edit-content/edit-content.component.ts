@@ -40,32 +40,20 @@ export class EditContentComponent {
           debugger
           console.log('Content updated successfully:', response);
           this.dialogRef.close();
-          this.router.navigateByUrl('/Contents', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/Contents']);
-          });
+
+          // need to load the page to show the updated data
+          this.reloadCurrentRoute();
         },
         (error) => {
           console.error('Error occurred while updating content:', error);
         }
       );
   }
-  getContentList() {
-    const params = {
-      title: this.filterTitle,
-      page: this.pageNumber,
-      size: this.pageSize,
-      sort: `${this.sortField},${this.sortOrder}`
-    };
-
-    this.contentService.getAllContents(params).subscribe(
-      (response: any) => {
-        this.contentList = response.contentList;
-        this.numberOfPages = response.numberOfPages;
-        console.log(this.contentList);
-      },
-      (error) => {
-        console.error('Error occurred while fetching CMS user list:', error);
-      }
-    );
+  private reloadCurrentRoute(): void {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl(currentUrl);
+    });
   }
+
 }
