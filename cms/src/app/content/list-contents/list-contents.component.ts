@@ -20,7 +20,7 @@ export class ListContentsComponent {
   filterTitle: string = ''; // Default filter value
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 10;
   sortField: string = 'contentId';
   sortOrder: string = 'ASC';
   userName: string;

@@ -1,7 +1,7 @@
 <br><br><br>
 <div class="container">
-    <button style=" margin-left: -1px;" class="add-new-item" routerLink="/AddAddress" matTooltip="Add New Item"><i
-            class="fas fa-plus-circle"></i> Add New Item</button>
+    <button style=" margin-left: -1px;" class="add-new-item" routerLink="/AddAddress" matTooltip="Add New Address"><i
+            class="fas fa-plus-circle"></i> Add New Address</button>
     <br><br>
     <h2>Address List</h2>
     <!-- <div>
@@ -20,7 +20,7 @@
     </div> -->
 
     <!-- Filter section -->
-    <div class="filter-section">
+    <div  *ngIf="!removeFlag" class="filter-section">
         <div >
             <select style="margin-left: -1110px;" id="addressSelect" [(ngModel)]="filterType" (change)="applyFilter()">
                 <option value="">Select Address Type</option>
@@ -28,7 +28,7 @@
                 <option value="PERMANENT">PERMANENT</option>
             </select>
         </div>
-        <div *ngIf="!removeFlag">
+        <div>
             <input style="width: 180px;" type="text" id="searchInput" [(ngModel)]="filterTitle"
                 (ngModelChange)="applyFilter()" placeholder="search division,district,upazila...">
         </div>
