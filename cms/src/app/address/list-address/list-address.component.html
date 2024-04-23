@@ -46,7 +46,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let address of addressList">
-                <td *ngIf="!isUser()">{{null}}</td>
+                <td *ngIf="!isUser()">{{address.cmsUser.name}}</td>
                 <td>{{ address.addressType }}</td>
                 <td>{{ address.division.name }}</td>
                 <td>{{ address.district.name }}</td>

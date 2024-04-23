@@ -33,7 +33,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let content of contentList">
-                <td *ngIf="!isUser()">{{null}}</td>
+                <td *ngIf="!isUser()">{{content.cmsUser.name}}</td>
                 <td>{{ content.title }}</td>
                 <td>{{ content.type }}</td>
                 <td>
