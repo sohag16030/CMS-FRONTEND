@@ -6,15 +6,14 @@
     <h2>CMS User List</h2>
     <!-- Filter section -->
     <div class="filter-section">
-        <!-- <div>
-            <label for="genderSelect">Gender:</label>
+        <div>
             <select id="genderSelect" [(ngModel)]="filterGender" (change)="applyFilter()">
                 <option value="">Select Gender</option>
                 <option value="MALE">MALE</option>
                 <option value="FEMALE">FEMALE</option>
             </select>
-        </div> -->
-        <div style="margin-left: 85.5%;">
+        </div>
+        <div>
             <!-- <label for="searchInput">Search:</label> -->
             <input style="width: 180px;" type="text" id="searchInput" [(ngModel)]="filterEmail" (ngModelChange)="applyFilter()"
                 placeholder="search email,name,mobile no...">
@@ -25,9 +24,10 @@
         <thead>
             <tr>
                 <th (click)="sortData('userName')">User Name</th>
+                <th (click)="sortData('name')">Full Name</th>
+                <th (click)="sortData('role')">User Role</th>
                 <th (click)="sortData('mobileNumber')">Mobile Number</th>
                 <th (click)="sortData('email')">Email</th>
-                <th (click)="sortData('name')">Full Name</th>
                 <th (click)="sortData('gender')">Gender</th>
                 <th>Actions</th> <!-- Added column for actions -->
             </tr>
@@ -35,9 +35,11 @@
         <tbody>
             <tr *ngFor="let user of cmsUserList">
                 <td>{{ user.userName }}</td>
-                <td>{{ user.mobileNumber }}</td>
-                <td>{{ user.email }}</td>
                 <td>{{ user.name }}</td>
+                <td>{{ user.roles.substring(5) }}</td>
+                <td>{{ user.mobileNumber }}</td>
+                <td>{{ user.email}}</td>
+                
                 <td>{{ user.gender }}</td>
                 <td>
                     <button class="details" (click)="checkForRemoveFlag()" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId" matTooltip="Details"><i

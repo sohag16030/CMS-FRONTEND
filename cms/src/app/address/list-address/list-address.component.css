@@ -3,6 +3,20 @@
     margin: 20px auto;
 }
 
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box {
+    align-items: center;
+}
+
+.gender-filter {
+    align-items: center;
+}
+
 h2 {
     font-size: 24px;
     margin-bottom: 10px;

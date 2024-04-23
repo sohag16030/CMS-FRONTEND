@@ -31,9 +31,10 @@ export class CmsUserListComponent implements OnInit {
   }
 
   getCmsUserList() {
+    const email = `${this.filterEmail} ${this.filterGender}`.trim();
+    debugger
     const params = {
-      gender: this.filterGender,
-      email: this.filterEmail,
+      email: email,
       page: this.pageNumber,
       size: this.pageSize,
       sort: `${this.sortField},${this.sortOrder}`

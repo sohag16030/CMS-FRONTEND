@@ -11,9 +11,10 @@ export class ListAddressComponent implements OnInit {
 
   addressList: any[] = [];
   filterTitle: string = ''; // Default filter value
+  filterType: string = ''; // Default filter value
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 4;
+  pageSize: number = 10;
   sortField: string = 'addressId';
   sortOrder: string = 'ASC';
   userRoles: string;
@@ -33,8 +34,9 @@ export class ListAddressComponent implements OnInit {
   }
 
   getAddressList() {
+    const searchText = `${this.filterTitle} ${this.filterType}`.trim();
     const params = {
-      searchText: this.filterTitle,
+      searchText: searchText,
       page: this.pageNumber,
       size: this.pageSize,
       sort: `${this.sortField},${this.sortOrder}`
