@@ -8,10 +8,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./list-address.component.css']
 })
 export class ListAddressComponent implements OnInit {
+
   addressList: any[] = [];
+  filterTitle: string = ''; // Default filter value
   pageNumber: number = 0;
   numberOfPages: number = 0;
-  pageSize: number = 2;
+  pageSize: number = 4;
   sortField: string = 'addressId';
   sortOrder: string = 'ASC';
   userRoles: string;
@@ -32,6 +34,7 @@ export class ListAddressComponent implements OnInit {
 
   getAddressList() {
     const params = {
+      searchText: this.filterTitle,
       page: this.pageNumber,
       size: this.pageSize,
       sort: `${this.sortField},${this.sortOrder}`
@@ -112,10 +115,8 @@ export class ListAddressComponent implements OnInit {
   }
 
   checkForRemoveFlagOnce() {
-    debugger
     // Check if removeFlag is enabled from another component
     const detailsButtonClicked = localStorage.getItem('detailsButtonClicked');
-    debugger
     if (this.isUser()) {
       localStorage.setItem('detailsButtonClicked', 'false');
       this.removeFlag = true;

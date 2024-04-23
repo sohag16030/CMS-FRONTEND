@@ -4,10 +4,10 @@
     <br><br>
     <h2>Address List</h2>
     <div class="filter-section" *ngIf="!removeFlag">
-        <div>
-            <label for="searchInput">Search:</label>
-            <input type="text" id="searchInput" placeholder="Enter...">
-        </div>
+        <div style="margin-left: 40.5%;" class="filter-section">
+            <input type="text" id="searchInput" [(ngModel)]="filterTitle" (ngModelChange)="applyFilter()"
+                placeholder="search...">
+        </div>    
     </div>
     <table class="address-table">
         <thead>

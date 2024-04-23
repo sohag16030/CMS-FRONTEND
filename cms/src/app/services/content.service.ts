@@ -18,6 +18,7 @@ export class ContentService {
     }
 
     getAllContents(params: any): Observable<any> {
+        debugger
         return this.httpClient.get(`${BASIC_URL}/contents`, { params });
     }
 
