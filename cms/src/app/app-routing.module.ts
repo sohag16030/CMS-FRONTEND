@@ -8,9 +8,7 @@ import { CmsUserListComponent } from './list-cms-users/list-cms-users.component'
 import { ListAddressComponent } from './address/list-address/list-address.component';
 import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
-import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
-import { LoginComponent } from './auth/login/login.component';
 import { AdminHomePageComponent } from './home/admin-home-page/admin-home-page.component';
 import { UserHomePageComponent } from './home/user-home-page/user-home-page.component';
 import { DefaultHomePageComponent } from './home/default-home-page/default-home-page.component';
@@ -35,7 +33,6 @@ const appRoute: Routes = [
     ]
   },
   { path: 'AddCmsUser', component: AddCmsUserComponent },
-  { path: 'CmsUsers/:cmsUserId', component: EditCmsUserComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
 
   //address route
   { path: 'Addresses', component: ListAddressComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},

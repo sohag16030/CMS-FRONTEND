@@ -11,7 +11,6 @@ import { CmsUserListComponent } from './list-cms-users/list-cms-users.component'
 import { AddNewAddressComponent } from './address/add-new-address/add-new-address.component';
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
 import { ListAddressComponent } from './address/list-address/list-address.component';
-import { EditCmsUserComponent } from './cmsUser/edit-cms-user/edit-cms-user.component';
 import { ListContentsComponent } from './content/list-contents/list-contents.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './auth/login/login.component';
@@ -29,7 +28,6 @@ import { EditContentComponent } from './content/edit-content/edit-content.compon
     AddCmsUserComponent,
     CmsUserListComponent,
     DetailsCmsUserComponent,
-    EditCmsUserComponent,
     ErrorComponent,
     AddNewAddressComponent,
     EditAddressComponent,
