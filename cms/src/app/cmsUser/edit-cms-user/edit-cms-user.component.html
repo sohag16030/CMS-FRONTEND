@@ -34,8 +34,8 @@
             <small style="color: red;" *ngIf="!cmsUserForm.get('email').valid && cmsUserForm.get('email').touched">
                 This email you entered is not a valid email
             </small>
-            <small style="color: red;" *ngIf="cmsUserForm.get('name').errors?.['required']">
-                Gender is a required field
+            <small style="color: red;" *ngIf="cmsUserForm.get('email').errors?.['required']">
+                Email is a required field
             </small>
         </div>
 

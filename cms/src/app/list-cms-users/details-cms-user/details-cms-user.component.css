@@ -84,3 +84,24 @@ button:hover {
   margin: 10px auto;
   margin-top: 10px;
 }
+
+.form-group.gender {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.gender label {
+  margin-right: 10px;
+}
+
+.form-group.gender select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group.gender small {
+  color: red;
+}

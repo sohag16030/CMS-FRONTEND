@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { CmsUser} from '../../model/cmsuser.model';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CmsUser } from '../../model/cmsuser.model';
 import { CmsUserService } from '../../services/cmsuser.service';
 
 
@@ -16,19 +16,33 @@ export class DetailsCmsUserComponent implements OnInit {
   cmsUser: CmsUser;
   showAddresses: boolean = false;
   showAcademicInfos: boolean = false;
+  cmsUserId: number;
+  editMode: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private cmsUserService: CmsUserService
-  ) { }
+    private cmsUserService: CmsUserService,
+    private router: Router,
+    private ngZone: NgZone
+  ) {
+    this.cmsUserForm = this.formBuilder.group({
+      userName: [null, Validators.required, this.noSpaceAllowed],
+      password: [null, Validators.required, this.noSpaceAllowed],
+      mobileNumber: [null, Validators.required, this.noSpaceAllowed],
+      email: [null, [Validators.required, Validators.email]], // Fixed here
+      name: [null, Validators.required],
+      gender: ['', Validators.required]
+    });
+
+  }
 
   ngOnInit(): void {
     this.cmsUserForm = this.formBuilder.group({
       cmsUserId: [''],
       userName: ['', Validators.required],
       mobileNumber: ['', Validators.required],
-      email: ['', Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       name: ['', Validators.required],
       gender: ['', Validators.required],
       addresses: this.formBuilder.array([]),
@@ -37,8 +51,8 @@ export class DetailsCmsUserComponent implements OnInit {
     });
 
     this.route.params.subscribe(params => {
-      const cmsUserId = +params['id'];
-      this.getCmsUserById(cmsUserId);
+      this.cmsUserId = +params['id'];
+      this.getCmsUserById(this.cmsUserId);
     });
   }
 
@@ -64,6 +78,45 @@ export class DetailsCmsUserComponent implements OnInit {
       gender: this.cmsUser.gender,
       isActive: this.cmsUser.isActive,
     });
+  }
+
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+    // Reset form validation status when switching between readonly and editable mode
+    if (!this.editMode) {
+      this.cmsUserForm.markAsPristine();
+    }
+  }
+  noSpaceAllowed(control: AbstractControl): Promise<ValidationErrors | null> {
+    return new Promise((resolve) => {
+      if (control.value !== null && control.value.indexOf(' ') !== -1) {
+        resolve({ noSpaceAllowed: true });
+      } else {
+        resolve(null);
+      }
+    });
+  }
+
+  onSubmit() {
+    debugger
+    if (this.cmsUserForm.valid) {
+      const formData = this.cmsUserForm.value;
+
+      this.cmsUserService.updateCmsUser(this.cmsUserId, formData).subscribe(
+        (response) => {
+          console.log('Successfully saved:', response);
+          this.editMode = false;
+          this.ngZone.run(() => {
+            this.router.navigate([`/CmsUsers/CmsUser/${this.cmsUserId}`]);
+          });
+        },
+        (error) => {
+          console.error('Error occurred while saving:', error);
+        }
+      );
+    } else {
+      console.log('Form is invalid. Cannot submit.');
+    }
   }
 
 }

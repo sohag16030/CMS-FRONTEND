@@ -2,32 +2,62 @@
 <div class="container">
   <form [formGroup]="cmsUserForm" class="user-details-form">
     <h3 style="margin-top: -12px;"><b>Basic Information:</b></h3>
-      <button style="margin-left: 950px;margin-top: -90px;margin-bottom: 10px; background-color: rgb(50, 124, 42)" class="details" [routerLink]="'/CmsUsers/' + cmsUser.cmsUserId" matTooltip="Edit"><i
-        class="fas fa-edit"></i></button>
+    <button (click)="toggleEditMode()"
+      style="margin-left: 950px;margin-top: -90px;margin-bottom: 10px; background-color: rgb(50, 124, 42)"
+      class="details" matTooltip="Edit"><i class="fas fa-edit"></i></button>
     <div class="basic-info-box">
       <div class="form-group">
         <label for="userName">User Name:</label>
-        <input type="text" id="userName" formControlName="userName" readonly>
+        <input type="text" id="userName" formControlName="userName" [readonly]="!editMode">
+        <small style="color: red;" *ngIf="cmsUserForm.get('userName').errors?.['required']">
+          User Name is a required field
+        </small>
       </div>
       <div class="form-group">
         <label for="mobileNumber">Mobile Number:</label>
-        <input type="text" id="mobileNumber" formControlName="mobileNumber" readonly>
+        <input type="text" id="mobileNumber" formControlName="mobileNumber" [readonly]="!editMode">
+        <small style="color: red;" *ngIf="cmsUserForm.get('mobileNumber').errors?.['required']">
+          Mobile Number is a required field
+        </small>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" readonly>
+        <input type="email" id="email" formControlName="email" [readonly]="!editMode">
+        <small style="color: red;" *ngIf="!cmsUserForm.get('email').valid && cmsUserForm.get('email').touched">
+          This email you entered is not a valid email
+      </small>
+      <small style="color: red;" *ngIf="cmsUserForm.get('email').errors?.['required']">
+          Email is a required field
+      </small>
       </div>
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" readonly>
+        <input type="text" id="name" formControlName="name" [readonly]="!editMode">
+        <small style="color: red;" *ngIf="cmsUserForm.get('name').errors?.['required']">
+          Full Name is a required field
+        </small>
       </div>
-      <div class="form-group">
+      <div class="form-group" *ngIf="!editMode">
         <label for="gender">Gender:</label>
-        <input type="text" id="gender" formControlName="gender" readonly>
+        <input type="text" id="gender" formControlName="gender">
       </div>
+      <div class="form-group" style="align-items: center;" *ngIf="editMode">
+        <label for="gender" style="margin-right: 10px;">Gender:</label>
+        <select id="gender" name="gender" formControlName="gender"
+          style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;width: 980px;">
+          <option value="Not Selected">Select Gender</option>
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+          <option value="OTHERS">OTHERS</option>
+        </select>
+        <small style="color: red;" *ngIf="cmsUserForm.get('gender').errors?.['required']">
+          Gender is a required field
+        </small>
+      </div>
+
+      <button *ngIf="editMode" (click)="onSubmit()" type="button">Submit</button>
     </div>
   </form>
-
 </div>
 <div class="addList">
   <app-list-address></app-list-address>
