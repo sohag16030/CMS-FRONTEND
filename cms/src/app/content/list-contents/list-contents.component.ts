@@ -122,6 +122,7 @@ export class ListContentsComponent {
   downloadContent(content: any) {
     this.contentService.downloadContent(content.contentId).subscribe(
       (response: any) => {
+        debugger
         const headers = response.headers;
         const contentDisposition = headers.get('Content-Disposition');
         // Extract filename from Content-Disposition header
