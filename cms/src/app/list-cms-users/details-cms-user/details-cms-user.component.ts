@@ -27,27 +27,22 @@ export class DetailsCmsUserComponent implements OnInit {
     private ngZone: NgZone
   ) {
     this.cmsUserForm = this.formBuilder.group({
-      userName: [null, Validators.required, this.noSpaceAllowed],
-      password: [null, Validators.required, this.noSpaceAllowed],
-      mobileNumber: [null, Validators.required, this.noSpaceAllowed],
-      email: [null, [Validators.required, Validators.email]], // Fixed here
-      name: [null, Validators.required],
-      gender: ['', Validators.required]
+      userName: [null],
+      password: [null],
+      mobileNumber: [null],
+      email: [null],
+      name: [null],
+      gender: [null]
     });
-
   }
 
   ngOnInit(): void {
     this.cmsUserForm = this.formBuilder.group({
-      cmsUserId: [''],
-      userName: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
+      userName: [null, Validators.required,this.noSpaceAllowed],
+      mobileNumber: [null, Validators.required, this.numericOnly],
       email: [null, [Validators.required, Validators.email]],
-      name: ['', Validators.required],
-      gender: ['', Validators.required],
-      addresses: this.formBuilder.array([]),
-      academicInfos: this.formBuilder.array([]),
-      isActive: ['']
+      name: [null, Validators.required],
+      gender: ['', Validators.required]
     });
 
     this.route.params.subscribe(params => {
@@ -87,10 +82,21 @@ export class DetailsCmsUserComponent implements OnInit {
       this.cmsUserForm.markAsPristine();
     }
   }
+
   noSpaceAllowed(control: AbstractControl): Promise<ValidationErrors | null> {
     return new Promise((resolve) => {
       if (control.value !== null && control.value.indexOf(' ') !== -1) {
         resolve({ noSpaceAllowed: true });
+      } else {
+        resolve(null);
+      }
+    });
+  }
+  numericOnly(control: AbstractControl): Promise<ValidationErrors | null>{
+
+    return new Promise((resolve) => {
+      if (control.value !== null && !/^\d+$/.test(control.value)) {
+        resolve({ numericOnly: true });
       } else {
         resolve(null);
       }

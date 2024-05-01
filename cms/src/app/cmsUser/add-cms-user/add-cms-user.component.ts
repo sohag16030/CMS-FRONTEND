@@ -22,7 +22,7 @@ export class AddCmsUserComponent implements OnInit {
     this.reactiveForm = this.fb.group({
       userName: [null, Validators.required,this.noSpaceAllowed],
       password: [null, Validators.required,this.noSpaceAllowed],
-      mobileNumber: [null, Validators.required,this.noSpaceAllowed],
+      mobileNumber: [null, Validators.required, this.numericOnly],
       email: [null, [Validators.required, Validators.email]],
       name: [null, Validators.required],
       gender: ['', Validators.required]
@@ -32,6 +32,17 @@ export class AddCmsUserComponent implements OnInit {
     return new Promise((resolve) => {
       if (control.value !== null && control.value.indexOf(' ') !== -1) {
         resolve({ noSpaceAllowed: true });
+      } else {
+        resolve(null);
+      }
+    });
+  }
+
+  numericOnly(control: AbstractControl): Promise<ValidationErrors | null>{
+
+    return new Promise((resolve) => {
+      if (control.value !== null && !/^\d+$/.test(control.value)) {
+        resolve({ numericOnly: true });
       } else {
         resolve(null);
       }

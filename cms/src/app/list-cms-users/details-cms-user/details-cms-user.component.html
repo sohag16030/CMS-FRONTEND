@@ -17,6 +17,9 @@
         <small style="color: red;" *ngIf="cmsUserForm.get('userName').errors?.['required']">
           User Name is a required field
         </small>
+        <small style="color: red;" *ngIf="cmsUserForm.get('userName').errors?.['noSpaceAllowed']">
+          User Name can not contain a space
+      </small>
       </div>
 
       <div class="form-group">
@@ -30,6 +33,9 @@
         <small style="color: red;" *ngIf="cmsUserForm.get('mobileNumber').errors?.['required']">
           Mobile Number is a required field
         </small>
+        <small style="color: red;" *ngIf="cmsUserForm.get('mobileNumber').errors?.['numericOnly']">
+          Mobile Number must contain only numeric characters
+      </small>
       </div>
 
       <div class="form-group">
@@ -68,7 +74,7 @@
         <label for="gender" style="margin-right: 10px;">Gender:</label>
         <select id="gender" name="gender" formControlName="gender"
           style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;width: 980px;">
-          <option value="Not Selected">Select Gender</option>
+          <option disabled selected value="">Select Gender</option>
           <option value="MALE">MALE</option>
           <option value="FEMALE">FEMALE</option>
           <option value="OTHERS">OTHERS</option>

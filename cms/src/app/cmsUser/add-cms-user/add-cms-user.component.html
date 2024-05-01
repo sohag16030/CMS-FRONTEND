@@ -25,7 +25,7 @@
                     Password is a required field
                 </small>
                 <small *ngIf="reactiveForm.get('password').errors?.['noSpaceAllowed']">
-                    User Name can not contain a space
+                    Password can not contain a space
                 </small>
             </div>
         </div>
@@ -43,6 +43,9 @@
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" formControlName="email" />
+            <small style="color: red;" *ngIf="reactiveForm.get('name').errors?.['required']">
+                Email is a required field.
+            </small>
             <small style="color: red;" *ngIf="!reactiveForm.get('email').valid && reactiveForm.get('email').touched">
                 This email you entered is not a valid email
             </small>
@@ -55,8 +58,8 @@
                 <small *ngIf="reactiveForm.get('mobileNumber').errors?.['required']">
                     Mobile Number is a required field
                 </small>
-                <small *ngIf="reactiveForm.get('mobileNumber').errors?.['noSpaceAllowed']">
-                    Mobile Number can not contain a space
+                <small *ngIf="reactiveForm.get('mobileNumber').errors?.['numericOnly']">
+                    Mobile Number must contain only numeric characters
                 </small>
             </div>
         </div>
