@@ -22,7 +22,11 @@ export class AddressService {
     }
 
     getAllAddresses(params: any): Observable<any> {
-        return this.http.get(`${BASIC_URL}/api/addresses`, { params });
+        debugger
+        const userDetails = localStorage.getItem('detailsButtonClicked') === 'true';
+        if (userDetails === true)
+            return this.http.get(`${BASIC_URL}/api/userDetails/addresses`, { params });
+        else return this.http.get(`${BASIC_URL}/api/addresses`, { params });
     }
 
     updateAddress(addressId: number, updatedData: any): Observable<any> {
