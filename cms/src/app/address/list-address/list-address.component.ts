@@ -41,7 +41,7 @@ export class ListAddressComponent implements OnInit {
       size: this.pageSize,
       sort: `${this.sortField},${this.sortOrder}`
     };
-
+    debugger
     this.addressService.getAllAddresses(params).subscribe(
       (response: any) => {
         this.addressList = response.addressList;

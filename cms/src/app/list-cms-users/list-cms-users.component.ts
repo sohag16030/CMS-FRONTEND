@@ -86,10 +86,11 @@ export class CmsUserListComponent implements OnInit {
     this.getCmsUserList();
   }
 
-  checkForRemoveFlag() {
+  checkForRemoveFlag(cmsUserId: number) {
     debugger
     // Check if removeFlag is enabled from another component
     localStorage.setItem('detailsButtonClicked', 'true');
+    localStorage.setItem('cmsUserId', cmsUserId.toString());
   }
 
   deleteCmsUser(cmsUserId: number) {

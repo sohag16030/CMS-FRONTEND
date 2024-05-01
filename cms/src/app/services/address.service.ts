@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CmsUser } from '../model/cmsuser.model';
 
 const BASIC_URL = 'http://localhost:8081';
 
@@ -8,6 +9,7 @@ const BASIC_URL = 'http://localhost:8081';
     providedIn: 'root'
 })
 export class AddressService {
+    cmsUserId : number;
 
     constructor(private http: HttpClient) { }
 
@@ -24,8 +26,12 @@ export class AddressService {
     getAllAddresses(params: any): Observable<any> {
         debugger
         const userDetails = localStorage.getItem('detailsButtonClicked') === 'true';
-        if (userDetails === true)
-            return this.http.get(`${BASIC_URL}/api/userDetails/addresses`, { params });
+        if (userDetails === true){
+            const cmsUserIdConst = localStorage.getItem('cmsUserId');
+            this.cmsUserId =  parseInt(cmsUserIdConst, 10);
+            return this.http.get(`${BASIC_URL}/api/addresses/cmsUserDetails/${this.cmsUserId}`, { params });
+        }
+            
         else return this.http.get(`${BASIC_URL}/api/addresses`, { params });
     }
 
