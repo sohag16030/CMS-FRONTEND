@@ -19,8 +19,8 @@ export class UserHomePageComponent implements OnInit {
   getUserDetails() {
     const token = localStorage.getItem('access_token');
     if (token) {
+      debugger
       const userDetails = this.authService.getUserDetails(token);
-      this.userId = userDetails.userId;
       this.userName = userDetails.userName;
     }
   }
