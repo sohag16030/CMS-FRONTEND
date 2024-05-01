@@ -8,21 +8,38 @@
     <div class="basic-info-box">
       <div class="form-group">
         <label for="userName">User Name:</label>
-        <input type="text" id="userName" formControlName="userName" [readonly]="!editMode">
+        <ng-container *ngIf="editMode; else userNameViewMode">
+          <input type="text" id="userName" formControlName="userName">
+        </ng-container>
+        <ng-template #userNameViewMode>
+          <div style="margin-top: 10px;" class="view-mode-text">{{ cmsUserForm.get('userName').value}}</div>
+        </ng-template>
         <small style="color: red;" *ngIf="cmsUserForm.get('userName').errors?.['required']">
           User Name is a required field
         </small>
       </div>
+
       <div class="form-group">
         <label for="mobileNumber">Mobile Number:</label>
-        <input type="text" id="mobileNumber" formControlName="mobileNumber" [readonly]="!editMode">
+        <ng-container *ngIf="editMode; else mobileNumberViewMode">
+          <input type="text" id="mobileNumber" formControlName="mobileNumber">
+        </ng-container>
+        <ng-template #mobileNumberViewMode>
+          <div style="margin-top: 10px;" class="view-mode-text">{{ cmsUserForm.get('mobileNumber').value}}</div>
+        </ng-template>
         <small style="color: red;" *ngIf="cmsUserForm.get('mobileNumber').errors?.['required']">
           Mobile Number is a required field
         </small>
       </div>
+
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" [readonly]="!editMode">
+        <ng-container *ngIf="editMode; else emailViewMode">
+          <input type="email" id="email" formControlName="email">
+        </ng-container>
+        <ng-template #emailViewMode>
+          <div style="margin-top: 10px;" class="view-mode-text">{{ cmsUserForm.get('email').value}}</div>
+        </ng-template>
         <small style="color: red;" *ngIf="!cmsUserForm.get('email').valid && cmsUserForm.get('email').touched">
           This email you entered is not a valid email
       </small>
@@ -30,16 +47,22 @@
           Email is a required field
       </small>
       </div>
+
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" [readonly]="!editMode">
+        <label for="name">Full Name:</label>
+        <ng-container *ngIf="editMode; else nameViewMode">
+        <input type="text" id="name" formControlName="name">
+      </ng-container>
+      <ng-template #nameViewMode>
+        <div style="margin-top: 10px;" class="view-mode-text">{{ cmsUserForm.get('name').value}}</div>
+      </ng-template>
         <small style="color: red;" *ngIf="cmsUserForm.get('name').errors?.['required']">
           Full Name is a required field
         </small>
       </div>
       <div class="form-group" *ngIf="!editMode">
         <label for="gender">Gender:</label>
-        <input type="text" id="gender" formControlName="gender">
+        <div style="margin-top: 10px;" class="view-mode-text">{{ cmsUserForm.get('gender').value}}</div>
       </div>
       <div class="form-group" style="align-items: center;" *ngIf="editMode">
         <label for="gender" style="margin-right: 10px;">Gender:</label>
