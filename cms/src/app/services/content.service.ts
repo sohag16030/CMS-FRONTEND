@@ -22,6 +22,11 @@ export class ContentService {
         return this.httpClient.get(`${BASIC_URL}/contents`, { params });
     }
 
+    getAllContentsByUser(params: any): Observable<any> {
+        debugger
+        return this.httpClient.get(`${BASIC_URL}/contents/user`, { params });
+    }
+
     downloadContent(contentId: number): Observable<any> {
         // Return the observable directly
         return this.httpClient.get(`${BASIC_URL}/contents/download/${contentId}`, {

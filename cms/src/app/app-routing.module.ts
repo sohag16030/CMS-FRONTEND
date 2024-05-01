@@ -14,6 +14,7 @@ import { UserHomePageComponent } from './home/user-home-page/user-home-page.comp
 import { DefaultHomePageComponent } from './home/default-home-page/default-home-page.component';
 import { AuthGuard } from './services/authguard.service';
 import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
+import { ContentListForAllUsersComponent } from './content/content-list-for-all-users/content-list-for-all-users.component';
 
 const appRoute: Routes = [
 
@@ -41,7 +42,7 @@ const appRoute: Routes = [
   
   //content route
   { path: 'Contents', component: ListContentsComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
-  //{ path: 'Contents/:contentId', component: EditContentComponent },
+  { path: 'AllContents', component: ContentListForAllUsersComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN','ROLE_USER'] }},
 
   { path: 'Unauthorized', component: ForbiddenComponent },
   { path: 'Notfound', component: ErrorComponent },

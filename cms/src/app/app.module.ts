@@ -21,6 +21,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TokenInterceptorService } from './services/token.interceptor.service';
 import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
 import { EditContentComponent } from './content/edit-content/edit-content.component';
+import { ContentListForAllUsersComponent } from './content/content-list-for-all-users/content-list-for-all-users.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EditContentComponent } from './content/edit-content/edit-content.compon
     NavBarComponent,
     ForbiddenComponent,
     EditContentComponent,
+    ContentListForAllUsersComponent
   ],
   imports: [
     BrowserModule,
