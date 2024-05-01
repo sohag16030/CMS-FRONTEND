@@ -37,11 +37,11 @@ export class AuthService {
     return jwtDecode(token);
   }
 
-  getUserDetails(token: string): { userId: string, userName: string } {
+  getUserDetails(token: string): { userId: string, username: string } {
     const jwtToken = this.decodeJwtToken(token);
     const userId = jwtToken.userId; // Assuming 'userId' is the key in the JWT token for user ID
-    const userName = jwtToken.userName; // Assuming 'userName' is the key in the JWT token for user name
-    return { userId, userName };
+    const username = jwtToken.username; // Assuming 'userName' is the key in the JWT token for user name
+    return { userId, username };
   }
   
 
