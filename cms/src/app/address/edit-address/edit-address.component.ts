@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms'; // Import FormBuilder and FormGroup
 import { Address } from '../../model/cmsuser.model';
 import { districts, divisions, upazilas } from '../../model/address-data';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-edit-address',
@@ -16,6 +17,9 @@ export class EditAddressComponent implements OnInit {
   divisions = divisions;
   districts = districts;
   upazilas = upazilas;
+  userId: string;
+  userName: string;
+
 
   cmsUserIds: number[] = Array.from({ length: 10 }, (_, i) => i + 1); // Array from 1 to 10
 
@@ -23,7 +27,8 @@ export class EditAddressComponent implements OnInit {
     private route: ActivatedRoute,
     private addressService: AddressService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.addressForm = this.formBuilder.group({
       // Initialize form controls
@@ -37,6 +42,7 @@ export class EditAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.getUserDetails();
       this.addressId = parseInt(params['addressId']);
       this.getAddress(this.addressId);
     });
@@ -60,7 +66,15 @@ export class EditAddressComponent implements OnInit {
       }
     );
   }
-
+  getUserDetails() {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      debugger
+      const userDetails = this.authService.getUserDetails(token);
+      this.userName = userDetails.userName;
+      this.userId = userDetails.userId;
+    }
+  }
   onSubmit() {
     if (this.addressForm.valid) {
       const formData = this.addressForm.value;
@@ -97,14 +111,11 @@ export class EditAddressComponent implements OnInit {
         isActive: formData.isActive
       };
 
-
-      console.log(address);
-
       this.addressService.updateAddress(this.addressId,address).subscribe(
         response => {
           console.log('Address updated successfully:', response);
           this.addressForm.reset();
-          this.router.navigate(['/Addresses']);
+          this.router.navigate(['/CmsUsers/CmsUser/' + this.userId]);
         },
         error => {
           console.error('Error updating address:', error);

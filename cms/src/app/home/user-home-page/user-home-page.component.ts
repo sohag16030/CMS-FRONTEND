@@ -22,6 +22,7 @@ export class UserHomePageComponent implements OnInit {
       debugger
       const userDetails = this.authService.getUserDetails(token);
       this.userName = userDetails.userName;
+      this.userId = userDetails.userId;
     }
   }
 }

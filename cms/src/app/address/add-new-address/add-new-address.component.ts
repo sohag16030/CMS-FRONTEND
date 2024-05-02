@@ -80,20 +80,20 @@ export class AddNewAddressComponent implements OnInit {
         debugger
         address.cmsUser.cmsUserId = parseInt(this.userId, 10);
       }
-        this.addressService.addAddress(address).subscribe(
-          response => {
-            console.log('Address added successfully:', response);
-            // Optionally, you can reset the form after successful submission
-            this.addressForm.reset();
-            this.router.navigate(['/Addresses']);
-          },
-          error => {
-            debugger
-            console.error('Error adding address:', error);
-          }
-        );
+      this.addressService.addAddress(address).subscribe(
+        response => {
+          console.log('Address added successfully:', response);
+          // Optionally, you can reset the form after successful submission
+          this.addressForm.reset();
+          this.router.navigate(['/CmsUsers/CmsUser/' + this.userId]);
+        },
+        error => {
+          debugger
+          console.error('Error adding address:', error);
+        }
+      );
     }
-  }  
+  }
   isAdmin() {
     const token = localStorage.getItem('access_token');
     const jwtToken = this.authService.decodeJwtToken(token);

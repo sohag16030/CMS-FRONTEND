@@ -45,19 +45,6 @@
                 </small>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="cmsUserId">User Id:</label>
-            <select id="cmsUserId" name="cmsUserId" formControlName="cmsUserId">
-                <option *ngFor="let id of cmsUserIds" [value]="id">{{ id }}</option>
-            </select>
-            <div style="color: red; margin-top: -10px;">
-                <small *ngIf="addressForm.get('cmsUserId').errors?.['required']">
-                    User Id is a required field
-                </small>
-            </div>
-        </div> <!-- Closing div for "User Id" form-group -->
-
         <button type="submit">Submit</button>
     </form>
 </div>
