@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CmsUserService } from '../../services/cmsuser.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -15,8 +16,9 @@ export class AddCmsUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cmsUserService: CmsUserService,
-    private router: Router
-  ) { } // Inject CmsUserService
+    private router: Router,
+    private authService: AuthService
+  ) { } 
 
   ngOnInit() {
     this.reactiveForm = this.fb.group({
@@ -55,7 +57,9 @@ export class AddCmsUserComponent implements OnInit {
         (response) => {
           console.log('Successfully saved:', response);
           this.reactiveForm.reset();
-          this.router.navigate(['/']);
+          if(this.isAdmin())
+            this.router.navigate(['/CmsUsers']);
+          else this.router.navigate(['/']);
         },
         (error) => {
           console.error('Error occurred while saving:', error);
@@ -64,5 +68,14 @@ export class AddCmsUserComponent implements OnInit {
     } else {
       console.log('Form is invalid. Cannot submit.');
     }
+  }
+
+  isAdmin() {
+    const token = localStorage.getItem('access_token');
+    const jwtToken = this.authService.decodeJwtToken(token);
+    const userRole = this.authService.getUserRoles(jwtToken);
+    if (userRole.includes('ROLE_ADMIN')) {
+      return true;
+    } else return false;
   }
 }

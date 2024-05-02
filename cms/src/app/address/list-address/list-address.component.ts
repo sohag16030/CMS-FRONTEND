@@ -1,6 +1,7 @@
 import { Component, OnInit, booleanAttribute } from '@angular/core';
 import { AddressService } from '../../services/address.service';
 import { AuthService } from '../../services/auth.service';
+import { flatMap } from 'rxjs';
 
 @Component({
   selector: 'app-list-address',
@@ -21,6 +22,7 @@ export class ListAddressComponent implements OnInit {
   userId: string;
   userName: string;
   removeFlag: boolean = false;
+  userDetailsButtonClicked: boolean = false;
 
   constructor(private addressService: AddressService, private authService: AuthService) { }
 
@@ -129,4 +131,13 @@ export class ListAddressComponent implements OnInit {
     }
     console.log("detailsButtonClicked button pressed  ::" + this.removeFlag);
   }
+
+  userDeatilsButtonClicked() {
+    const userDetails = localStorage.getItem('detailsButtonClicked') === 'true';
+    if (userDetails === true) {
+      this.userDetailsButtonClicked = true;
+    }
+  }
 }
+
+

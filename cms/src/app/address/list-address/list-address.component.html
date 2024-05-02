@@ -3,55 +3,59 @@
     <button *ngIf="isUser()" style=" margin-left: -1px;" class="add-new-item" routerLink="/AddAddress" matTooltip="Add New Address"><i
             class="fas fa-plus-circle"></i> Add New Address</button>
     <br *ngIf="isUser()"><br *ngIf="isUser()">
-    <h2>Address List</h2>
-    <!-- Filter section -->
-    <div  *ngIf="!removeFlag" class="filter-section">
-        <div >
-            <select style="margin-left: -1105px;" id="addressSelect" [(ngModel)]="filterType" (change)="applyFilter()">
-                <option value="">Select Address Type</option>
-                <option value="PRESENT">PRESENT</option>
-                <option value="PERMANENT">PERMANENT</option>
-            </select>
+    <!-- <div *ngIf="addressList && addressList.length > 0"> -->
+    <div>
+        <h2>Address List</h2>
+        <!-- Filter section -->
+        <div  *ngIf="!removeFlag" class="filter-section">
+            <div >
+                <select style="margin-left: -1105px;" id="addressSelect" [(ngModel)]="filterType" (change)="applyFilter()">
+                    <option value="">Select Address Type</option>
+                    <option value="PRESENT">PRESENT</option>
+                    <option value="PERMANENT">PERMANENT</option>
+                </select>
+            </div>
+            <div>
+                <input style="width: 180px;" type="text" id="searchInput" [(ngModel)]="filterTitle"
+                    (ngModelChange)="applyFilter()" placeholder="search....">
+            </div>
         </div>
-        <div>
-            <input style="width: 180px;" type="text" id="searchInput" [(ngModel)]="filterTitle"
-                (ngModelChange)="applyFilter()" placeholder="search....">
+        <table class="address-table">
+            <thead>
+                <tr>
+                    <th *ngIf="!isUser()">Full Name</th>
+                    <th>Address Type</th>
+                    <th>Division</th>
+                    <th>District</th>
+                    <th>Upazila</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let address of addressList">
+                    <td *ngIf="!isUser()">{{address.cmsUser.name}}</td>
+                    <td>{{ address.addressType }}</td>
+                    <td>{{ address.division.name }}</td>
+                    <td>{{ address.district.name }}</td>
+                    <td>{{ address.upazila.name }}</td>
+                    <td>
+                        <button class="edit" [routerLink]="'/Addresses/' + address.addressId" matTooltip="Edit"><i
+                                class="fas fa-edit"></i></button>
+    
+                        <button class="delete" (click)="deleteAddress(address.addressId)" matTooltip="Delete"><i
+                                class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="pagination" *ngIf="!removeFlag">
+            <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
+            <div *ngFor="let page of getPageArray()">
+                <button class="pagination" (click)="goToPage(page)" [disabled]="page === pageNumber">{{ page + 1 }}</button>
+            </div>
+            <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
         </div>
     </div>
-    <table class="address-table">
-        <thead>
-            <tr>
-                <th *ngIf="!isUser()">Full Name</th>
-                <th>Address Type</th>
-                <th>Division</th>
-                <th>District</th>
-                <th>Upazila</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let address of addressList">
-                <td *ngIf="!isUser()">{{address.cmsUser.name}}</td>
-                <td>{{ address.addressType }}</td>
-                <td>{{ address.division.name }}</td>
-                <td>{{ address.district.name }}</td>
-                <td>{{ address.upazila.name }}</td>
-                <td>
-                    <button class="edit" [routerLink]="'/Addresses/' + address.addressId" matTooltip="Edit"><i
-                            class="fas fa-edit"></i></button>
-
-                    <button class="delete" (click)="deleteAddress(address.addressId)" matTooltip="Delete"><i
-                            class="fas fa-trash-alt"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="pagination" *ngIf="!removeFlag">
-        <button class="pagination" (click)="getPreviousPage()" [disabled]="pageNumber === 0">Previous</button>
-        <div *ngFor="let page of getPageArray()">
-            <button class="pagination" (click)="goToPage(page)" [disabled]="page === pageNumber">{{ page + 1 }}</button>
-        </div>
-        <button class="pagination" (click)="getNextPage()" [disabled]="pageNumber === numberOfPages - 1">Next</button>
-    </div>
+   
 </div>
