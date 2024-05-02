@@ -39,7 +39,7 @@
                     <td>{{ address.district.name }}</td>
                     <td>{{ address.upazila.name }}</td>
                     <td>
-                        <button class="edit" [routerLink]="'/Addresses/' + address.addressId" matTooltip="Edit"><i
+                        <button *ngIf="isUser()" class="edit" [routerLink]="'/Addresses/' + address.addressId" matTooltip="Edit"><i
                                 class="fas fa-edit"></i></button>
     
                         <button class="delete" (click)="deleteAddress(address.addressId)" matTooltip="Delete"><i
