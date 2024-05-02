@@ -55,5 +55,8 @@ export class EditContentComponent {
       this.router.navigateByUrl(currentUrl);
     });
   }
+  cancel(){
+    this.dialogRef.close();
+  }
 
 }

@@ -124,5 +124,10 @@ export class DetailsCmsUserComponent implements OnInit {
       console.log('Form is invalid. Cannot submit.');
     }
   }
+  cancelled(cmsUserId: number): void{
+    debugger
+    this.getCmsUserById(cmsUserId);
+    this.editMode=false;
+  }
 
 }
