@@ -22,6 +22,7 @@ import { TokenInterceptorService } from './services/token.interceptor.service';
 import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
 import { EditContentComponent } from './content/edit-content/edit-content.component';
 import { ContentListForAllUsersComponent } from './content/content-list-for-all-users/content-list-for-all-users.component';
+import { AdminListComponent } from './cmsUser/admin-list/admin-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ContentListForAllUsersComponent } from './content/content-list-for-all-
     NavBarComponent,
     ForbiddenComponent,
     EditContentComponent,
-    ContentListForAllUsersComponent
+    ContentListForAllUsersComponent,
+    AdminListComponent
   ],
   imports: [
     BrowserModule,

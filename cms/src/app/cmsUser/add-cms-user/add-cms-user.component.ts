@@ -23,6 +23,7 @@ export class AddCmsUserComponent implements OnInit {
   ngOnInit() {
     this.reactiveForm = this.fb.group({
       userName: [null, Validators.required, this.noSpaceAllowed],
+      roles: [null, Validators.required, this.noSpaceAllowed],
       password: [null, Validators.required, this.noSpaceAllowed],
       mobileNumber: [null, Validators.required, this.numericOnly],
       email: [null, [Validators.required, Validators.email]],

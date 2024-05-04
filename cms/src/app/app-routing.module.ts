@@ -15,6 +15,7 @@ import { DefaultHomePageComponent } from './home/default-home-page/default-home-
 import { AuthGuard } from './services/authguard.service';
 import { ForbiddenComponent } from './errorPages/forbidden/forbidden.component';
 import { ContentListForAllUsersComponent } from './content/content-list-for-all-users/content-list-for-all-users.component';
+import { AdminListComponent } from './cmsUser/admin-list/admin-list.component';
 
 const appRoute: Routes = [
 
@@ -27,6 +28,7 @@ const appRoute: Routes = [
   // { path: 'Login', component: LoginComponent },
 
   //cmsUser route
+  { path: 'CmsUsers/AdminList', component: AdminListComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
   { path: 'CmsUsers', component: CmsUserListComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] }},
   {
     path: 'CmsUsers', children: [

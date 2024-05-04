@@ -1,0 +1,35 @@
+<br><br><br>
+<div class="container">
+    <button style=" margin-left: -1px;" class="add-new-item" routerLink="/AddCmsUser" matTooltip="Add New Admin"><i class="fas fa-plus-circle"></i> Add New Admin</button>
+
+    <br><br>
+    <h2>ADMIN PANEL</h2>
+    <table class="cms-user-table">
+        <thead>
+            <tr>
+                <th (click)="sortData('userName')">User Name</th>
+                <th (click)="sortData('name')">Full Name</th>
+                <th (click)="sortData('mobileNumber')">Mobile Number</th>
+                <th (click)="sortData('email')">Email</th>
+                <th (click)="sortData('gender')">Gender</th>
+                <th>Actions</th> <!-- Added column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of cmsUserList">
+                <td>{{ user.userName }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.mobileNumber }}</td>
+                <td>{{ user.email}}</td>
+                
+                <td>{{ user.gender }}</td>
+                <td>
+                    <button class="details" (click)="checkForRemoveFlag(user.cmsUserId)" [routerLink]="'/CmsUsers/CmsUser/' + user.cmsUserId" matTooltip="Details"><i
+                            class="fas fa-info-circle"></i></button>
+                    <button class="delete" (click)="deleteCmsUser(user.cmsUserId)" matTooltip="Delete"><i
+                            class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
