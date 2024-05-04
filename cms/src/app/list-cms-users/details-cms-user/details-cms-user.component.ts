@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { ActivatedRoute, Router } from '@angular/router';
 import { CmsUser } from '../../model/cmsuser.model';
 import { CmsUserService } from '../../services/cmsuser.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -18,13 +19,16 @@ export class DetailsCmsUserComponent implements OnInit {
   showAcademicInfos: boolean = false;
   cmsUserId: number;
   editMode: boolean = false;
+  userName: string;
+  userId: number;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private cmsUserService: CmsUserService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private authService: AuthService
   ) {
     this.cmsUserForm = this.formBuilder.group({
       userName: [null],
@@ -130,4 +134,21 @@ export class DetailsCmsUserComponent implements OnInit {
     this.editMode=false;
   }
 
+  getUserDetails() {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const userDetails = this.authService.getUserDetails(token);
+      this.userId = parseInt(userDetails.userId, 10);
+      this.userName = userDetails.userName;
+    }
+  }
+  isUser() {
+    const token = localStorage.getItem('access_token');
+    const jwtToken = this.authService.decodeJwtToken(token);
+    const userRole = this.authService.getUserRoles(jwtToken);
+    this.getUserDetails();
+    if (userRole.includes('ROLE_USER')) {
+      return true;
+    } else return false;
+  }
 }

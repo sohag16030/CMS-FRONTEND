@@ -18,12 +18,12 @@ export class AddCmsUserComponent implements OnInit {
     private cmsUserService: CmsUserService,
     private router: Router,
     private authService: AuthService
-  ) { } 
+  ) { }
 
   ngOnInit() {
     this.reactiveForm = this.fb.group({
-      userName: [null, Validators.required,this.noSpaceAllowed],
-      password: [null, Validators.required,this.noSpaceAllowed],
+      userName: [null, Validators.required, this.noSpaceAllowed],
+      password: [null, Validators.required, this.noSpaceAllowed],
       mobileNumber: [null, Validators.required, this.numericOnly],
       email: [null, [Validators.required, Validators.email]],
       name: [null, Validators.required],
@@ -40,7 +40,7 @@ export class AddCmsUserComponent implements OnInit {
     });
   }
 
-  numericOnly(control: AbstractControl): Promise<ValidationErrors | null>{
+  numericOnly(control: AbstractControl): Promise<ValidationErrors | null> {
 
     return new Promise((resolve) => {
       if (control.value !== null && !/^\d+$/.test(control.value)) {
@@ -52,14 +52,19 @@ export class AddCmsUserComponent implements OnInit {
   }
   onSubmit() {
     if (this.reactiveForm.valid) {
+
       const formData = this.reactiveForm.value;
       this.cmsUserService.addCmsUser(formData).subscribe(
         (response) => {
           console.log('Successfully saved:', response);
           this.reactiveForm.reset();
-          if(this.isAdmin())
+          debugger
+          if (this.isAdmin())
             this.router.navigate(['/CmsUsers']);
-          else this.router.navigate(['/']);
+          else if (!this.isAdmin()) {
+            debugger
+            this.router.navigate(['/']);
+          }
         },
         (error) => {
           console.error('Error occurred while saving:', error);
@@ -71,7 +76,9 @@ export class AddCmsUserComponent implements OnInit {
   }
 
   isAdmin() {
+    debugger
     const token = localStorage.getItem('access_token');
+    if(token===null) return false;
     const jwtToken = this.authService.decodeJwtToken(token);
     const userRole = this.authService.getUserRoles(jwtToken);
     if (userRole.includes('ROLE_ADMIN')) {
